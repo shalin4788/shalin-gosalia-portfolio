@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Shalin Gosalia — AI Product Leader</title>
+  <meta name="description" content="AI Product Leader (VP) — Enterprise GenAI, RAG platforms, and governance in regulated fintech." />
+  <style>
+    :root{
+      --bg:#ffffff;
+      --ink:#0b0f19;
+      --muted:#5b6475;
+      --hair:#e7e9ee;
+      --accent:#2f6df6;
+      --max: 980px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--ink);
+      font: 16px/1.6 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+    a{color:inherit; text-decoration:none}
+    a:hover{color:var(--accent)}
+    .wrap{max-width:var(--max); margin:0 auto; padding:48px 22px 72px;}
+    header{display:flex; gap:20px; align-items:flex-start; justify-content:space-between; flex-wrap:wrap;}
+    .title h1{margin:0; font-size:40px; letter-spacing:-0.02em; line-height:1.15;}
+    .title .sub{margin-top:8px; color:var(--muted); font-size:18px; max-width:62ch;}
+    .links{display:flex; gap:14px; flex-wrap:wrap; align-items:center; margin-top:10px}
+    .pill{
+      display:inline-flex; align-items:center; gap:10px;
+      border:1px solid var(--hair);
+      padding:8px 12px;
+      border-radius:999px;
+      font-size:14px;
+      color:var(--muted);
+      background:#fff;
+    }
+    .dot{width:6px; height:6px; border-radius:50%; background:var(--accent); display:inline-block}
+    .divider{border-top:1px solid var(--hair); margin:34px 0;}
+    .section{margin-top:36px}
+    .kicker{
+      text-transform:uppercase;
+      letter-spacing:0.12em;
+      font-weight:600;
+      font-size:12px;
+      color:var(--muted);
+      margin:0 0 10px;
+    }
+    h2{margin:0 0 10px; font-size:22px; letter-spacing:-0.01em;}
+    p{margin:0 0 12px}
+    ul{margin:10px 0 0; padding:0 0 0 18px;}
+    li{margin:8px 0}
+    .chips{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
+    .chip{
+      border:1px solid var(--hair);
+      border-radius:999px;
+      padding:8px 12px;
+      font-size:14px;
+      background:#fff;
+      display:inline-flex;
+      gap:10px;
+      align-items:center;
+      color:var(--ink);
+    }
+    .chip small{color:var(--muted); font-size:13px}
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:14px;
+      margin-top:14px;
+    }
+    @media (max-width: 760px){
+      .grid{grid-template-columns:1fr}
+      .title h1{font-size:34px}
+    }
+    .card{
+      border:1px solid var(--hair);
+      border-radius:16px;
+      padding:16px 16px 14px;
+      background:#fff;
+    }
+    .card h3{margin:0 0 6px; font-size:17px; letter-spacing:-0.01em;}
+    .card .meta{color:var(--muted); font-size:14px; margin:0 0 10px}
+    .tags{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px}
+    .tag{
+      font-size:12px;
+      color:var(--muted);
+      border:1px solid var(--hair);
+      border-radius:999px;
+      padding:6px 10px;
+      background:#fff;
+    }
+    .principles{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0,1fr));
+      gap:10px;
+      margin-top:12px;
+    }
+    @media (max-width: 760px){
+      .principles{grid-template-columns:1fr}
+    }
+    .principle{
+      border-left:2px solid var(--accent);
+      padding:10px 12px;
+      background:linear-gradient(90deg, rgba(47,109,246,0.06), rgba(47,109,246,0.0));
+      border-radius:10px;
+    }
+    .principle b{display:block; margin-bottom:4px}
+    .artifacts{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0,1fr));
+      gap:10px;
+      margin-top:12px;
+    }
+    @media (max-width: 760px){
+      .artifacts{grid-template-columns:1fr}
+    }
+    .artifact{
+      border:1px solid var(--hair);
+      border-radius:14px;
+      padding:12px 12px;
+      background:#fff;
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      align-items:center;
+    }
+    .artifact span{color:var(--muted); font-size:13px}
+    footer{
+      margin-top:46px;
+      padding-top:22px;
+      border-top:1px solid var(--hair);
+      display:flex;
+      justify-content:space-between;
+      gap:14px;
+      flex-wrap:wrap;
+      color:var(--muted);
+    }
+    .cta{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      border:1px solid rgba(47,109,246,0.25);
+      background:rgba(47,109,246,0.06);
+      border-radius:14px;
+      padding:12px 14px;
+      color:var(--ink);
+    }
+    .cta b{font-weight:650}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header>
+      <div class="title">
+        <h1>Shalin Gosalia</h1>
+        <div class="sub">
+          AI Product Leader (VP) — Enterprise GenAI, RAG platforms, and governance-led delivery in regulated fintech.
+          <br/><span style="color:var(--muted)">New York City, NY</span>
+        </div>
+        <div class="links">
+          <a class="pill" href="#" title="Add your LinkedIn URL"><span class="dot"></span> LinkedIn</a>
+          <a class="pill" href="#" title="Add your GitHub URL"><span class="dot"></span> GitHub</a>
+          <a class="pill" href="mailto:gosalia.shalin@gmail.com"><span class="dot"></span> Email</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="pill" style="color:var(--ink)">
+          <span class="dot"></span>
+          <span><b>Open to AI Product Leadership</b><br/><span style="color:var(--muted);font-size:13px">Fintech • Asset Mgmt • Platforms</span></span>
+        </div>
+      </div>
+    </header>
+
+    <div class="divider"></div>
+
+    <section class="section">
+      <p class="kicker">Proof (high-level)</p>
+      <h2>Scale + outcomes (examples)</h2>
+      <div class="chips">
+        <div class="chip"><b>25K</b> <small>advisors / internal users</small></div>
+        <div class="chip"><b>2M</b> <small>clients served</small></div>
+        <div class="chip"><b>~$15M</b> <small>annual savings opportunity</small></div>
+        <div class="chip"><b>+15%</b> <small>NPS lift (program-level)</small></div>
+      </div>
+      <p style="margin-top:10px;color:var(--muted);font-size:13px">
+        Note: Use “examples” where confidentiality applies; replace with redacted ranges if needed.
+      </p>
+    </section>
+
+    <section class="section">
+      <p class="kicker">What I build</p>
+      <h2>Enterprise AI platforms that ship</h2>
+      <ul>
+        <li><b>GenAI / RAG platforms</b> that move from pilots to production-grade tools under governance.</li>
+        <li><b>AI orchestration layers</b> that unify client/portfolio content + workflow actions across channels.</li>
+        <li><b>Compliance-first AI</b> (human-in-the-loop, model monitoring, policy controls, risk alignment).</li>
+        <li><b>Advisor workflow modernization</b> (productivity, containment, measurable operational lift).</li>
+        <li><b>Observability & evaluation</b> (dashboards, error taxonomies, quality metrics, continuous improvement).</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <p class="kicker">Featured case studies</p>
+      <h2>Selected work</h2>
+
+      <div class="grid">
+        <a class="card" href="#" title="Link to case study page">
+          <h3>Morgan Stanley — Enterprise Assistants + RAG modernization</h3>
+          <p class="meta">Built and scaled GenAI assistants across advisor + DTC channels; modernized legacy systems into governed RAG pipelines.</p>
+          <div class="tags">
+            <span class="tag">GenAI</span><span class="tag">RAG</span><span class="tag">Governance</span><span class="tag">Wealth</span>
+          </div>
+        </a>
+
+        <a class="card" href="#" title="Link to case study page">
+          <h3>Verizon — AI servicing assistant</h3>
+          <p class="meta">Launched AI-powered digital servicing; improved containment and customer experience with measurable savings.</p>
+          <div class="tags">
+            <span class="tag">Digital Assist</span><span class="tag">Automation</span><span class="tag">NPS</span><span class="tag">Scale</span>
+          </div>
+        </a>
+
+        <a class="card" href="#" title="Link to case study page">
+          <h3>ADP — NLU orchestration platform</h3>
+          <p class="meta">Architected orchestration + API layer integrating NLU to power messaging workflows across HR/Payroll/HCM.</p>
+          <div class="tags">
+            <span class="tag">NLU</span><span class="tag">Platform</span><span class="tag">APIs</span><span class="tag">Observability</span>
+          </div>
+        </a>
+
+        <a class="card" href="#" title="Link to case study page">
+          <h3>Fidelity — Goal-based planning platform</h3>
+          <p class="meta">Owned product roadmap across onboarding, account opening, portfolio construction, and coaching flows.</p>
+          <div class="tags">
+            <span class="tag">Wealth</span><span class="tag">Planning</span><span class="tag">Managed Accounts</span><span class="tag">UX</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <section class="section">
+      <p class="kicker">How I work</p>
+      <h2>Old-school product rigor, modern AI delivery</h2>
+      <p>
+        I run tight discovery, write clear requirements, partner deeply with engineering and data science, and treat
+        governance as a first-class product feature. I optimize for production reality: reliability, controls, adoption,
+        and measurable impact.
+      </p>
+
+      <div class="principles">
+        <div class="principle"><b>Platform-first</b> Build reusable capabilities that scale across teams and channels.</div>
+        <div class="principle"><b>Metrics-first</b> Define success early; instrument everything; iterate relentlessly.</div>
+        <div class="principle"><b>Governance-by-design</b> Human-in-loop, monitoring, and controls from day one.</div>
+        <div class="principle"><b>Partner tightly</b> Engineering, data, design, risk/legal/compliance as one team.</div>
+      </div>
+    </section>
+
+    <section class="section">
+      <p class="kicker">Artifacts (redacted)</p>
+      <h2>Evidence you can review</h2>
+
+      <div class="artifacts">
+        <div class="artifact"><div><b>PRD excerpt</b><br/><span>Redacted for confidentiality</span></div><span>PDF</span></div>
+        <div class="artifact"><div><b>Roadmap one-pager</b><br/><span>Now / Next / Later</span></div><span>PNG</span></div>
+        <div class="artifact"><div><b>Architecture diagram</b><br/><span>RAG + orchestration layer</span></div><span>SVG</span></div>
+        <div class="artifact"><div><b>Evaluation plan</b><br/><span>Quality metrics + HITL</span></div><span>DOC</span></div>
+        <div class="artifact"><div><b>Dashboard snapshot</b><br/><span>Monitoring + KPIs</span></div><span>PNG</span></div>
+        <div class="artifact"><div><b>Launch memo</b><br/><span>Release notes + adoption plan</span></div><span>PDF</span></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <p class="kicker">About</p>
+      <h2>Background</h2>
+      <p>
+        I’m an AI Product Leader with 13+ years across wealth management, investment technology, and enterprise AI platforms.
+        I specialize in taking AI from experimental pilots to production-grade systems that deliver real business outcomes
+        under stringent governance constraints.
+      </p>
+    </section>
+
+    <footer>
+      <div class="cta">
+        <span class="dot"></span>
+        <div><b>Open to AI Product Leadership roles</b><br/><span style="color:var(--muted)">Fintech • Asset Mgmt • Enterprise Platforms</span></div>
+      </div>
+      <div>
+        <div><b>Contact</b>: <a href="mailto:gosalia.shalin@gmail.com">gosalia.shalin@gmail.com</a></div>
+        <div style="margin-top:4px;font-size:13px">© <span id="y"></span> Shalin Gosalia</div>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
