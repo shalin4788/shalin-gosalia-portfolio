@@ -109,6 +109,11 @@
       gap:14px;
       align-items:stretch;
     }
+    .visuals-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 16px;
+    }
     @media (max-width: 860px){
       .hero{grid-template-columns:1fr}
       h1{font-size:38px}
@@ -289,9 +294,12 @@
     <p class="kicker">Selected Work</p>
     <h2>Featured Case Studies</h2>
     <div class="grid">
-      <a class="case" href="#" title="Link to case study page">
+      <a class="case" href="work/morgan-stanley.html" title="Morgan Stanley Case Study">
+        <img src="images/ms_rag_pipeline.png" alt="RAG pipeline architecture" class="case-thumb">
+        <img src="images/diagram2.png" alt="Workflow diagram">
+        <img src="images/diagram3.png" alt="Dashboard screenshot">
         <h3>Morgan Stanley — Enterprise Assistants + RAG modernization</h3>
-        <p class="meta">Scaled GenAI assistants across advisor + DTC channels; modernized legacy systems into governed RAG pipelines.</p>
+        <p class="meta">Scaled GenAI assistants; modernized legacy systems into governed RAG pipelines.</p>
         <div class="tags">
           <span class="tag">GenAI</span><span class="tag">RAG</span><span class="tag">Governance</span><span class="tag">Wealth</span>
         </div>
