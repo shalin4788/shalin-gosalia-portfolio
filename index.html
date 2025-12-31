@@ -4,229 +4,303 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Shalin Gosalia — AI Product Leader</title>
-  <meta name="description" content="AI Product Leader (VP) — Enterprise GenAI, RAG platforms, and governance in regulated fintech." />
+  <meta name="description" content="AI Product Leader (VP) — Enterprise GenAI, RAG platforms, orchestration, and governance in regulated fintech." />
   <style>
     :root{
-      --bg:#ffffff;
-      --ink:#0b0f19;
-      --muted:#5b6475;
-      --hair:#e7e9ee;
-      --accent:#2f6df6;
-      --max: 980px;
+      --bg:#070a12;
+      --ink:#eef2ff;
+      --muted:rgba(238,242,255,.72);
+      --hair:rgba(238,242,255,.10);
+      --card:rgba(255,255,255,.06);
+      --card2:rgba(255,255,255,.08);
+      --accent:#7c5cff;     /* violet */
+      --accent2:#2f6df6;    /* blue */
+      --max: 1040px;
+      --radius: 18px;
     }
     *{box-sizing:border-box}
+    html,body{height:100%}
     body{
       margin:0;
-      background:var(--bg);
       color:var(--ink);
-      font: 16px/1.6 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      font: 16px/1.65 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: var(--bg);
+      overflow-x:hidden;
       -webkit-font-smoothing:antialiased;
       -moz-osx-font-smoothing:grayscale;
     }
+    /* --- Chen-style rich background (gradient mesh + glow blobs + subtle noise) --- */
+    .bg{
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      z-index:-2;
+      background:
+        radial-gradient(900px 600px at 15% 10%, rgba(124,92,255,.35), transparent 60%),
+        radial-gradient(900px 600px at 85% 15%, rgba(47,109,246,.28), transparent 60%),
+        radial-gradient(900px 600px at 65% 90%, rgba(124,92,255,.22), transparent 60%),
+        radial-gradient(1200px 900px at 40% 70%, rgba(47,109,246,.14), transparent 70%),
+        linear-gradient(180deg, #070a12 0%, #070a12 35%, #060917 100%);
+      filter:saturate(1.08);
+    }
+    .noise{
+      position:fixed; inset:0;
+      z-index:-1;
+      pointer-events:none;
+      opacity:.08;
+      mix-blend-mode:overlay;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+      background-size:240px 240px;
+    }
+
     a{color:inherit; text-decoration:none}
-    a:hover{color:var(--accent)}
-    .wrap{max-width:var(--max); margin:0 auto; padding:48px 22px 72px;}
-    header{display:flex; gap:20px; align-items:flex-start; justify-content:space-between; flex-wrap:wrap;}
-    .title h1{margin:0; font-size:40px; letter-spacing:-0.02em; line-height:1.15;}
-    .title .sub{margin-top:8px; color:var(--muted); font-size:18px; max-width:62ch;}
-    .links{display:flex; gap:14px; flex-wrap:wrap; align-items:center; margin-top:10px}
+    a:hover{color:#fff}
+    .wrap{max-width:var(--max); margin:0 auto; padding:44px 20px 76px;}
+    .topbar{
+      display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;
+      align-items:center;
+      padding:12px 14px;
+      border:1px solid var(--hair);
+      background:rgba(0,0,0,.20);
+      border-radius:999px;
+      backdrop-filter: blur(10px);
+    }
+    .topbar .left{display:flex; gap:12px; align-items:center; flex-wrap:wrap;}
+    .badge{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:7px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.06);
+      color:var(--muted);
+      font-size:13px;
+    }
+    .dot{
+      width:7px; height:7px; border-radius:50%;
+      background:linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 0 18px rgba(124,92,255,.55);
+      display:inline-block;
+    }
     .pill{
       display:inline-flex; align-items:center; gap:10px;
-      border:1px solid var(--hair);
-      padding:8px 12px;
+      border:1px solid rgba(255,255,255,.14);
+      padding:7px 12px;
       border-radius:999px;
-      font-size:14px;
+      font-size:13px;
       color:var(--muted);
-      background:#fff;
+      background:rgba(255,255,255,.04);
     }
-    .dot{width:6px; height:6px; border-radius:50%; background:var(--accent); display:inline-block}
-    .divider{border-top:1px solid var(--hair); margin:34px 0;}
-    .section{margin-top:36px}
+
+    header{padding:34px 0 18px;}
+    h1{
+      margin:0;
+      font-size:44px;
+      letter-spacing:-0.03em;
+      line-height:1.12;
+    }
+    .subtitle{
+      margin-top:10px;
+      color:var(--muted);
+      font-size:18px;
+      max-width:72ch;
+    }
+    .hero{
+      margin-top:22px;
+      display:grid;
+      grid-template-columns: 1.35fr .65fr;
+      gap:14px;
+      align-items:stretch;
+    }
+    @media (max-width: 860px){
+      .hero{grid-template-columns:1fr}
+      h1{font-size:38px}
+    }
+
+    .card{
+      border:1px solid var(--hair);
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+      border-radius: var(--radius);
+      padding:18px 18px 16px;
+      backdrop-filter: blur(12px);
+    }
+    .card strong{font-weight:680}
     .kicker{
       text-transform:uppercase;
-      letter-spacing:0.12em;
-      font-weight:600;
+      letter-spacing:.14em;
+      font-weight:700;
       font-size:12px;
-      color:var(--muted);
+      color:rgba(238,242,255,.62);
       margin:0 0 10px;
     }
     h2{margin:0 0 10px; font-size:22px; letter-spacing:-0.01em;}
     p{margin:0 0 12px}
-    ul{margin:10px 0 0; padding:0 0 0 18px;}
-    li{margin:8px 0}
-    .chips{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
-    .chip{
-      border:1px solid var(--hair);
-      border-radius:999px;
-      padding:8px 12px;
-      font-size:14px;
-      background:#fff;
-      display:inline-flex;
-      gap:10px;
-      align-items:center;
-      color:var(--ink);
+
+    .metrics{
+      display:flex; gap:10px; flex-wrap:wrap;
     }
+    .chip{
+      display:inline-flex; align-items:baseline; gap:10px;
+      padding:10px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(0,0,0,.20);
+    }
+    .chip b{font-size:16px}
     .chip small{color:var(--muted); font-size:13px}
+
+    .section{margin-top:22px}
+    ul{margin:10px 0 0; padding:0 0 0 18px}
+    li{margin:8px 0; color:rgba(238,242,255,.90)}
     .grid{
       display:grid;
       grid-template-columns:repeat(2, minmax(0, 1fr));
       gap:14px;
-      margin-top:14px;
+      margin-top:12px;
     }
-    @media (max-width: 760px){
-      .grid{grid-template-columns:1fr}
-      .title h1{font-size:34px}
-    }
-    .card{
+    @media (max-width: 860px){ .grid{grid-template-columns:1fr} }
+
+    .case{
       border:1px solid var(--hair);
-      border-radius:16px;
+      background:rgba(255,255,255,.05);
+      border-radius: var(--radius);
       padding:16px 16px 14px;
-      background:#fff;
+      transition: transform .12s ease, background .12s ease;
     }
-    .card h3{margin:0 0 6px; font-size:17px; letter-spacing:-0.01em;}
-    .card .meta{color:var(--muted); font-size:14px; margin:0 0 10px}
-    .tags{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px}
+    .case:hover{transform: translateY(-2px); background:rgba(255,255,255,.07)}
+    .case h3{margin:0 0 6px; font-size:17px; letter-spacing:-0.01em}
+    .meta{margin:0 0 10px; color:var(--muted); font-size:14px}
+    .tags{display:flex; gap:8px; flex-wrap:wrap}
     .tag{
-      font-size:12px;
-      color:var(--muted);
-      border:1px solid var(--hair);
-      border-radius:999px;
+      font-size:12px; color:rgba(238,242,255,.72);
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(0,0,0,.18);
       padding:6px 10px;
-      background:#fff;
+      border-radius:999px;
     }
+
     .principles{
       display:grid;
       grid-template-columns:repeat(2, minmax(0,1fr));
       gap:10px;
-      margin-top:12px;
+      margin-top:10px;
     }
-    @media (max-width: 760px){
-      .principles{grid-template-columns:1fr}
-    }
+    @media (max-width: 860px){ .principles{grid-template-columns:1fr} }
     .principle{
-      border-left:2px solid var(--accent);
-      padding:10px 12px;
-      background:linear-gradient(90deg, rgba(47,109,246,0.06), rgba(47,109,246,0.0));
-      border-radius:10px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.04);
+      border-radius:14px;
+      padding:12px 12px;
     }
-    .principle b{display:block; margin-bottom:4px}
+
     .artifacts{
       display:grid;
       grid-template-columns:repeat(2, minmax(0,1fr));
       gap:10px;
-      margin-top:12px;
+      margin-top:10px;
     }
-    @media (max-width: 760px){
-      .artifacts{grid-template-columns:1fr}
-    }
+    @media (max-width: 860px){ .artifacts{grid-template-columns:1fr} }
     .artifact{
-      border:1px solid var(--hair);
+      display:flex; justify-content:space-between; gap:10px; align-items:center;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(0,0,0,.18);
       border-radius:14px;
       padding:12px 12px;
-      background:#fff;
-      display:flex;
-      justify-content:space-between;
-      gap:12px;
-      align-items:center;
     }
     .artifact span{color:var(--muted); font-size:13px}
+
     footer{
-      margin-top:46px;
-      padding-top:22px;
-      border-top:1px solid var(--hair);
-      display:flex;
-      justify-content:space-between;
-      gap:14px;
-      flex-wrap:wrap;
+      margin-top:26px;
+      padding-top:18px;
+      border-top:1px solid rgba(255,255,255,.12);
+      display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap;
       color:var(--muted);
     }
     .cta{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      border:1px solid rgba(47,109,246,0.25);
-      background:rgba(47,109,246,0.06);
-      border-radius:14px;
+      display:inline-flex; gap:10px; align-items:center;
       padding:12px 14px;
-      color:var(--ink);
+      border-radius:14px;
+      border:1px solid rgba(124,92,255,.30);
+      background:linear-gradient(135deg, rgba(124,92,255,.16), rgba(47,109,246,.10));
     }
-    .cta b{font-weight:650}
+    .cta b{color:#fff}
   </style>
 </head>
 <body>
+  <div class="bg"></div>
+  <div class="noise"></div>
+
   <main class="wrap">
+    <nav class="topbar">
+      <div class="left">
+        <span class="badge"><span class="dot"></span> Open to AI Product Leadership</span>
+        <span class="pill">New York City, NY</span>
+        <span class="pill">Fintech • Asset Mgmt • Platforms</span>
+      </div>
+      <div class="left">
+        <a class="pill" href="#" title="Add LinkedIn URL">LinkedIn</a>
+        <a class="pill" href="#" title="Add GitHub URL">GitHub</a>
+        <a class="pill" href="mailto:gosalia.shalin@gmail.com">Email</a>
+      </div>
+    </nav>
+
     <header>
-      <div class="title">
-        <h1>Shalin Gosalia</h1>
-        <div class="sub">
-          AI Product Leader (VP) — Enterprise GenAI, RAG platforms, and governance-led delivery in regulated fintech.
-          <br/><span style="color:var(--muted)">New York City, NY</span>
-        </div>
-        <div class="links">
-          <a class="pill" href="#" title="Add your LinkedIn URL"><span class="dot"></span> LinkedIn</a>
-          <a class="pill" href="#" title="Add your GitHub URL"><span class="dot"></span> GitHub</a>
-          <a class="pill" href="mailto:gosalia.shalin@gmail.com"><span class="dot"></span> Email</a>
-        </div>
+      <h1>Shalin Gosalia</h1>
+      <div class="subtitle">
+        AI Product Leader (VP) building enterprise GenAI platforms, RAG systems, and governance-led AI delivery in regulated environments.
       </div>
 
-      <div>
-        <div class="pill" style="color:var(--ink)">
-          <span class="dot"></span>
-          <span><b>Open to AI Product Leadership</b><br/><span style="color:var(--muted);font-size:13px">Fintech • Asset Mgmt • Platforms</span></span>
-        </div>
+      <div class="hero">
+        <section class="card">
+          <p class="kicker">Proof (high-level)</p>
+          <h2>Scale + outcomes (examples)</h2>
+          <div class="metrics">
+            <div class="chip"><b>25K</b><small>advisors / internal users</small></div>
+            <div class="chip"><b>2M</b><small>clients served</small></div>
+            <div class="chip"><b>~$15M</b><small>annual savings opportunity</small></div>
+            <div class="chip"><b>+15%</b><small>NPS lift (program-level)</small></div>
+          </div>
+          <p style="margin-top:10px;color:var(--muted);font-size:13px">
+            Keep numbers you can defend publicly. If needed, convert to ranges (e.g., “$10–$20M”).
+          </p>
+        </section>
+
+        <aside class="card">
+          <p class="kicker">Focus</p>
+          <h2>What I build</h2>
+          <p style="color:var(--muted);margin-bottom:8px">
+            Platform-first AI that ships — with reliability, controls, and adoption.
+          </p>
+          <ul>
+            <li><strong>GenAI / RAG</strong> production pipelines</li>
+            <li><strong>Orchestration layers</strong> + APIs</li>
+            <li><strong>Governance</strong> + HITL review</li>
+            <li><strong>Observability</strong> + evaluation</li>
+          </ul>
+        </aside>
       </div>
     </header>
 
-    <div class="divider"></div>
-
-    <section class="section">
-      <p class="kicker">Proof (high-level)</p>
-      <h2>Scale + outcomes (examples)</h2>
-      <div class="chips">
-        <div class="chip"><b>25K</b> <small>advisors / internal users</small></div>
-        <div class="chip"><b>2M</b> <small>clients served</small></div>
-        <div class="chip"><b>~$15M</b> <small>annual savings opportunity</small></div>
-        <div class="chip"><b>+15%</b> <small>NPS lift (program-level)</small></div>
-      </div>
-      <p style="margin-top:10px;color:var(--muted);font-size:13px">
-        Note: Use “examples” where confidentiality applies; replace with redacted ranges if needed.
-      </p>
-    </section>
-
-    <section class="section">
-      <p class="kicker">What I build</p>
-      <h2>Enterprise AI platforms that ship</h2>
-      <ul>
-        <li><b>GenAI / RAG platforms</b> that move from pilots to production-grade tools under governance.</li>
-        <li><b>AI orchestration layers</b> that unify client/portfolio content + workflow actions across channels.</li>
-        <li><b>Compliance-first AI</b> (human-in-the-loop, model monitoring, policy controls, risk alignment).</li>
-        <li><b>Advisor workflow modernization</b> (productivity, containment, measurable operational lift).</li>
-        <li><b>Observability & evaluation</b> (dashboards, error taxonomies, quality metrics, continuous improvement).</li>
-      </ul>
-    </section>
-
-    <section class="section">
-      <p class="kicker">Featured case studies</p>
-      <h2>Selected work</h2>
-
+    <section class="section card">
+      <p class="kicker">Selected work</p>
+      <h2>Featured case studies</h2>
       <div class="grid">
-        <a class="card" href="#" title="Link to case study page">
+        <a class="case" href="#" title="Link to case study page">
           <h3>Morgan Stanley — Enterprise Assistants + RAG modernization</h3>
-          <p class="meta">Built and scaled GenAI assistants across advisor + DTC channels; modernized legacy systems into governed RAG pipelines.</p>
+          <p class="meta">Scaled GenAI assistants across advisor + DTC channels; modernized legacy systems into governed RAG pipelines.</p>
           <div class="tags">
             <span class="tag">GenAI</span><span class="tag">RAG</span><span class="tag">Governance</span><span class="tag">Wealth</span>
           </div>
         </a>
 
-        <a class="card" href="#" title="Link to case study page">
+        <a class="case" href="#" title="Link to case study page">
           <h3>Verizon — AI servicing assistant</h3>
           <p class="meta">Launched AI-powered digital servicing; improved containment and customer experience with measurable savings.</p>
           <div class="tags">
-            <span class="tag">Digital Assist</span><span class="tag">Automation</span><span class="tag">NPS</span><span class="tag">Scale</span>
+            <span class="tag">Automation</span><span class="tag">Digital Assist</span><span class="tag">NPS</span><span class="tag">Scale</span>
           </div>
         </a>
 
-        <a class="card" href="#" title="Link to case study page">
+        <a class="case" href="#" title="Link to case study page">
           <h3>ADP — NLU orchestration platform</h3>
           <p class="meta">Architected orchestration + API layer integrating NLU to power messaging workflows across HR/Payroll/HCM.</p>
           <div class="tags">
@@ -234,9 +308,9 @@
           </div>
         </a>
 
-        <a class="card" href="#" title="Link to case study page">
+        <a class="case" href="#" title="Link to case study page">
           <h3>Fidelity — Goal-based planning platform</h3>
-          <p class="meta">Owned product roadmap across onboarding, account opening, portfolio construction, and coaching flows.</p>
+          <p class="meta">Owned roadmap across onboarding, account opening, portfolio construction, and coaching flows.</p>
           <div class="tags">
             <span class="tag">Wealth</span><span class="tag">Planning</span><span class="tag">Managed Accounts</span><span class="tag">UX</span>
           </div>
@@ -244,52 +318,35 @@
       </div>
     </section>
 
-    <section class="section">
+    <section class="section card">
       <p class="kicker">How I work</p>
-      <h2>Old-school product rigor, modern AI delivery</h2>
-      <p>
-        I run tight discovery, write clear requirements, partner deeply with engineering and data science, and treat
-        governance as a first-class product feature. I optimize for production reality: reliability, controls, adoption,
-        and measurable impact.
+      <h2>Principles</h2>
+      <p style="color:var(--muted)">
+        Old-school product rigor (clear requirements, tight execution) with modern AI delivery (evaluation, monitoring, governance).
       </p>
-
       <div class="principles">
-        <div class="principle"><b>Platform-first</b> Build reusable capabilities that scale across teams and channels.</div>
-        <div class="principle"><b>Metrics-first</b> Define success early; instrument everything; iterate relentlessly.</div>
-        <div class="principle"><b>Governance-by-design</b> Human-in-loop, monitoring, and controls from day one.</div>
-        <div class="principle"><b>Partner tightly</b> Engineering, data, design, risk/legal/compliance as one team.</div>
+        <div class="principle"><strong>Platform-first</strong><br><span style="color:var(--muted)">Reusable capabilities that scale across teams.</span></div>
+        <div class="principle"><strong>Metrics-first</strong><br><span style="color:var(--muted)">Instrumentation, targets, and iteration.</span></div>
+        <div class="principle"><strong>Governance-by-design</strong><br><span style="color:var(--muted)">HITL, monitoring, and controls from day one.</span></div>
+        <div class="principle"><strong>Partner tightly</strong><br><span style="color:var(--muted)">Engineering + data + risk/legal/compliance.</span></div>
       </div>
     </section>
 
-    <section class="section">
-      <p class="kicker">Artifacts (redacted)</p>
-      <h2>Evidence you can review</h2>
-
+    <section class="section card">
+      <p class="kicker">Artifacts</p>
+      <h2>Evidence (redacted)</h2>
       <div class="artifacts">
-        <div class="artifact"><div><b>PRD excerpt</b><br/><span>Redacted for confidentiality</span></div><span>PDF</span></div>
-        <div class="artifact"><div><b>Roadmap one-pager</b><br/><span>Now / Next / Later</span></div><span>PNG</span></div>
-        <div class="artifact"><div><b>Architecture diagram</b><br/><span>RAG + orchestration layer</span></div><span>SVG</span></div>
-        <div class="artifact"><div><b>Evaluation plan</b><br/><span>Quality metrics + HITL</span></div><span>DOC</span></div>
-        <div class="artifact"><div><b>Dashboard snapshot</b><br/><span>Monitoring + KPIs</span></div><span>PNG</span></div>
-        <div class="artifact"><div><b>Launch memo</b><br/><span>Release notes + adoption plan</span></div><span>PDF</span></div>
+        <div class="artifact"><div><strong>PRD excerpt</strong><br><span>Redacted for confidentiality</span></div><span>PDF</span></div>
+        <div class="artifact"><div><strong>Roadmap one-pager</strong><br><span>Now / Next / Later</span></div><span>PNG</span></div>
+        <div class="artifact"><div><strong>Architecture diagram</strong><br><span>RAG + orchestration layer</span></div><span>SVG</span></div>
+        <div class="artifact"><div><strong>Evaluation plan</strong><br><span>Quality metrics + HITL</span></div><span>DOC</span></div>
+        <div class="artifact"><div><strong>Dashboard snapshot</strong><br><span>Monitoring + KPIs</span></div><span>PNG</span></div>
+        <div class="artifact"><div><strong>Launch memo</strong><br><span>Release notes + adoption plan</span></div><span>PDF</span></div>
       </div>
-    </section>
-
-    <section class="section">
-      <p class="kicker">About</p>
-      <h2>Background</h2>
-      <p>
-        I’m an AI Product Leader with 13+ years across wealth management, investment technology, and enterprise AI platforms.
-        I specialize in taking AI from experimental pilots to production-grade systems that deliver real business outcomes
-        under stringent governance constraints.
-      </p>
     </section>
 
     <footer>
-      <div class="cta">
-        <span class="dot"></span>
-        <div><b>Open to AI Product Leadership roles</b><br/><span style="color:var(--muted)">Fintech • Asset Mgmt • Enterprise Platforms</span></div>
-      </div>
+      <div class="cta"><span class="dot"></span><div><b>Open to AI Product Leadership roles</b><br><span style="color:var(--muted)">Fintech • Asset Mgmt • Enterprise Platforms</span></div></div>
       <div>
         <div><b>Contact</b>: <a href="mailto:gosalia.shalin@gmail.com">gosalia.shalin@gmail.com</a></div>
         <div style="margin-top:4px;font-size:13px">© <span id="y"></span> Shalin Gosalia</div>
@@ -297,8 +354,6 @@
     </footer>
   </main>
 
-  <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
-  </script>
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
 </body>
 </html>
