@@ -191,7 +191,25 @@
       border-radius:14px;
       padding:12px 12px;
     }
+    /* Style for the highlighted numbers */
+.highlight-number {
+  font-weight: 800;          /* Makes it extra bold */
+  font-size: 1.25em;        /* Makes it slightly larger than text */
+  color: #007bff;           /* Use your primary brand color (e.g., Blue) */
+  display: inline-block;
+  margin-right: 2px;
+  /* Optional: adds a subtle text shadow for depth */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); 
+}
 
+/* Optional: Add a subtle background "pill" effect */
+.impact-block p {
+  background: #f8f9fa;
+  padding: 10px 15px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  border-left: 4px solid #007bff; /* Adds a vertical accent line */
+}
     .artifacts{
       display:grid;
       grid-template-columns:repeat(2, minmax(0,1fr));

@@ -162,9 +162,26 @@
   flex-wrap: wrap;
   gap: 20px;
   justify-content: center;
+}
 
+.two-col {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 14px;
+  margin-top: 22px;
+}
 
-    h2{margin:0 0 10px; font-size:22px; letter-spacing:-0.01em;}
+@media (max-width: 860px) {
+  .two-col {
+    grid-template-columns: 1fr;
+  }
+}
+
+h2 {
+  margin: 0 0 10px;
+  font-size: 22px;
+  letter-spacing: -0.01em;
+}
     p{margin:0 0 12px}
 
     .metrics{
@@ -223,7 +240,48 @@
       border-radius:14px;
       padding:12px 12px;
     }
+    .impact-build {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr; /* impact slightly larger */
+  gap: 16px;
+  align-items: stretch;
+}
+.scroller {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(340px, 420px);
+  gap: 14px;
 
+  overflow-x: auto;
+  padding-bottom: 6px;
+
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.scroller::-webkit-scrollbar {
+  height: 8px;
+}
+
+.scroller::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,.18);
+  border-radius: 999px;
+}
+
+.scroller::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scroller .case {
+  scroll-snap-align: start;
+}
+
+/* Mobile: stack like a grown-up site should */
+@media (max-width: 860px) {
+  .impact-build {
+    grid-template-columns: 1fr;
+  }
+}
     .artifacts{
       display:grid;
       grid-template-columns:repeat(2, minmax(0,1fr));
@@ -273,15 +331,15 @@
             <span class="pill">New York City, NY</span>
           </div>
         </nav>
-    
-      <div class="hero">
-<section id="work">
+    <section id="work">
 
   <!-- Recent Impact -->
+  <div class="two-col">
+  <!-- LEFT -->
   <section class="card">
     <h2>Recent Impact & Scale</h2>
     <div class="metrics">
-      <div class="chip"><b>25K</b><small>advisors / internal users</small></div>
+      <div class="chip"><b>25K</b><small>financial / internal users</small></div>
       <div class="chip"><b>2M</b><small>clients served</small></div>
       <div class="chip"><b>~$15M</b><small>annual savings opportunity</small></div>
       <div class="chip"><b>+15%</b><small>NPS lift (program-level)</small></div>
@@ -298,10 +356,9 @@
       *Scale and impact achieved through AI product leadership at Morgan Stanley (Wealth Management & E*TRADE Advisor/DTC AI platforms).*
     </p>
   </section>
-
+  <!-- RIGHT -->
   <!-- What I Build -->
-  <aside class="card">
-    <p class="kicker">Focus</p>
+  <section class="card">
     <h2>What I Build</h2>
     <p style="color:var(--muted);margin-bottom:10px; max-width:46ch;">
       Enterprise AI platforms and workflow products — designed to operate safely in regulated environments.
@@ -316,13 +373,13 @@
     <p style="margin-top:10px;color:var(--muted);font-size:13px; max-width:54ch;">
       Most of this scale and platform work was delivered at <strong>Morgan Stanley</strong> across Wealth Management and E*TRADE channels.
     </p>
-  </aside>
+  </div>
 
   <!-- Featured Case Studies -->
   <section class="section card">
     <p class="kicker">Selected Work</p>
     <h2>Featured Case Studies</h2>
-    <div class="grid">
+    <div class="scroller">
       <a class="case" href="work/ai-platform.html" title="AI Platform Case Study">
         <div class="diagram-wrapper">
           <img src="../images/rag_architecture.png" alt="RAG Architecture Diagram">
@@ -347,7 +404,6 @@
           <span class="tag">Automation</span><span class="tag">Digital Assist</span><span class="tag">NPS</span><span class="tag">Scale</span>
         </div>
       </a>
-
       <a class="case" href="#" title="Link to case study page">
         <h3>ADP — NLU Orchestration Platform</h3>
         <p class="meta">Architected orchestration + API layer integrating NLU to power messaging workflows across HR/Payroll/HCM.</p>
