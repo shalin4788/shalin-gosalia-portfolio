@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Shalin Gosalia — AI Product Leader</title>
   <meta name="description" content="AI Product Leader (VP) — Enterprise GenAI, RAG platforms, orchestration, and governance in regulated fintech." />
-  <style>
+<style>
     :root{
       --bg:#070a12;
       --ink:#eef2ff;
@@ -36,7 +36,7 @@
       pointer-events:none;
       z-index:-2;
       background:
-        radial-gradient(600px 400px at 20% 15%, rgba(124,92,255,.3), transparent 60%),
+         radial-gradient(600px 400px at 20% 15%, rgba(124,92,255,.3), transparent 60%),
         radial-gradient(800px 500px at 80% 20%, rgba(47,109,246,.25), transparent 60%),
         linear-gradient(180deg, #070a12 0%, #070a12 35%, #060917 100%);
       filter:saturate(1.08);
@@ -109,11 +109,15 @@
       gap:14px;
       align-items:stretch;
     }
+    .visuals-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 16px;
+    }
     @media (max-width: 860px){
       .hero{grid-template-columns:1fr}
       h1{font-size:38px}
     }
-
     .card{
       border:1px solid var(--hair);
       background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
@@ -130,7 +134,54 @@
       color:rgba(238,242,255,.62);
       margin:0 0 10px;
     }
-    h2{margin:0 0 10px; font-size:22px; letter-spacing:-0.01em;}
+   /* Ensure diagrams fit within card */
+.case .diagram-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: space-between;
+}
+
+.case .diagram-wrapper img {
+    flex: 1 1 48%;    /* take roughly half width of container */
+    max-width: 100%;   /* never exceed parent width */
+    height: auto;      /* maintain aspect ratio */
+    display: block;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.25);
+}
+
+/* Optional: constrain card width for large screens */
+.case {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.your-work-container-class {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 14px;
+  margin-top: 22px;
+}
+
+@media (max-width: 860px) {
+  .two-col {
+    grid-template-columns: 1fr;
+  }
+}
+
+h2 {
+  margin: 0 0 10px;
+  font-size: 22px;
+  letter-spacing: -0.01em;
+}
     p{margin:0 0 12px}
 
     .metrics{
@@ -189,24 +240,47 @@
       border-radius:14px;
       padding:12px 12px;
     }
-    /* Style for the highlighted numbers */
-.highlight-number {
-  font-weight: 800;          /* Makes it extra bold */
-  font-size: 1.25em;        /* Makes it slightly larger than text */
-  color: #007bff;           /* Use your primary brand color (e.g., Blue) */
-  display: inline-block;
-  margin-right: 2px;
-  /* Optional: adds a subtle text shadow for depth */
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); 
+    .impact-build {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr; /* impact slightly larger */
+  gap: 16px;
+  align-items: stretch;
+}
+.scroller {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(340px, 420px);
+  gap: 14px;
+
+  overflow-x: auto;
+  padding-bottom: 6px;
+
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
 }
 
-/* Optional: Add a subtle background "pill" effect */
-.impact-block p {
-  background: #f8f9fa;
-  padding: 10px 15px;
-  border-radius: 8px;
-  margin-bottom: 10px;
-  border-left: 4px solid #007bff; /* Adds a vertical accent line */
+.scroller::-webkit-scrollbar {
+  height: 8px;
+}
+
+.scroller::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,.18);
+  border-radius: 999px;
+}
+
+.scroller::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scroller .case {
+  scroll-snap-align: start;
+}
+
+/* Mobile: stack like a grown-up site should */
+@media (max-width: 860px) {
+  .impact-build {
+    grid-template-columns: 1fr;
+  }
 }
     .artifacts{
       display:grid;
@@ -240,6 +314,7 @@
     }
     .cta b{color:#fff}
   </style>
+
 </head>
 <body>
   <div class="bg"></div>
