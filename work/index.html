@@ -157,6 +157,50 @@
     margin: 0 auto;
 }
 
+/* Layout Container */
+.work-grid-container {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+/* Block 1: Impact & Build Side-by-Side */
+.block-intro {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two equal columns */
+  gap: 20px;
+}
+
+/* Block 2: Horizontal Scroll for Projects */
+.scroll-container {
+  display: flex;
+  overflow-x: auto;
+  gap: 20px;
+  padding-bottom: 15px;
+  scroll-snap-type: x mandatory; /* Makes it snap to each project */
+}
+
+.case-study-card {
+  min-width: 300px; /* Width of each project card */
+  flex-shrink: 0;
+  scroll-snap-align: start;
+  background: #f4f4f4;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+/* Block 3: Simple Full Width */
+.block-method {
+  width: 100%;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .block-intro {
+    grid-template-columns: 1fr; /* Stack on mobile */
+  }
+}
+
 .your-work-container-class {
   display: flex;
   flex-wrap: wrap;
@@ -276,6 +320,34 @@
     
       <div class="hero">
 <section id="work">
+<div class="work-grid-container">
+  
+  <section class="block-intro">
+    <div class="impacts">
+      <h2>Impacts</h2>
+      <p>Your impact details here...</p>
+    </div>
+    <div class="what-i-build">
+      <h2>What I Build</h2>
+      <p>Details about what you build...</p>
+    </div>
+  </section>
+
+  <section class="block-featured">
+    <h2>Featured Case Studies</h2>
+    <div class="scroll-container">
+      <div class="case-study-card">Morgan Stanley</div>
+      <div class="case-study-card">Verizon</div>
+      <div class="case-study-card">Project 3</div>
+    </div>
+  </section>
+
+  <section class="block-method">
+    <h2>How I Work</h2>
+    <p>Describe your process here...</p>
+  </section>
+
+</div>
 
   <!-- Recent Impact -->
   <section class="card">
