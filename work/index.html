@@ -157,50 +157,6 @@
     margin: 0 auto;
 }
 
-/* Layout Container */
-.work-grid-container {
-  display: flex;
-  flex-direction: column;
-  gap: 50px;
-}
-
-/* Block 1: Impact & Build Side-by-Side */
-.block-intro {
-  display: grid;
-  grid-template-columns: 1fr 1fr; /* Two equal columns */
-  gap: 20px;
-}
-
-/* Block 2: Horizontal Scroll for Projects */
-.scroll-container {
-  display: flex;
-  overflow-x: auto;
-  gap: 20px;
-  padding-bottom: 15px;
-  scroll-snap-type: x mandatory; /* Makes it snap to each project */
-}
-
-.case-study-card {
-  min-width: 300px; /* Width of each project card */
-  flex-shrink: 0;
-  scroll-snap-align: start;
-  background: #f4f4f4;
-  padding: 20px;
-  border-radius: 8px;
-}
-
-/* Block 3: Simple Full Width */
-.block-method {
-  width: 100%;
-}
-
-/* Mobile Responsiveness */
-@media (max-width: 768px) {
-  .block-intro {
-    grid-template-columns: 1fr; /* Stack on mobile */
-  }
-}
-
 .your-work-container-class {
   display: flex;
   flex-wrap: wrap;
