@@ -3,341 +3,124 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Shalin Gosalia — AI Product Leader</title>
-  <meta name="description" content="AI Product Leader (VP) — Enterprise GenAI, RAG platforms, orchestration, and governance in regulated fintech." />
-<style>
+  <title>Shalin Gosalia — Lead AI Product Manager</title>
+  <meta name="description" content="Lead AI Product Manager — 13+ years scaling GenAI, RAG, and governance in fintech." />
+  <style>
     :root {
-      --bg-deep: #0a0b0d;           /* Main background */
-      --bg-card: rgba(255,255,255,0.04); /* Transparent glass effect */
-      --accent-blue: #00d4ff;       /* KPI highlights & links */
-      --text-main: #f5f5f7;         /* High readability white */
-      --text-muted: #8e8e93;        /* Secondary info */
-      --hairline: rgba(255,255,255,0.1); /* Subtle borders */
-      --glass-blur: blur(12px);
+      --bg-deep: #07090f;
+      --bg-card: rgba(255, 255, 255, 0.03);
+      --accent: #00d4ff;
+      --text-main: #f5f5f7;
+      --text-muted: #a1a1aa;
+      --border: rgba(255, 255, 255, 0.1);
+      --max-width: 1440px; /* Expanded for widescreen */
+      --radius: 16px;
     }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-      body {
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body {
       background-color: var(--bg-deep);
       color: var(--text-main);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, sans-serif;
       line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
 
-    .card {
-      background: var(--bg-card);
-      border: 1px solid var(--hairline);
-      backdrop-filter: var(--glass-blur);
-      -webkit-backdrop-filter: var(--glass-blur);
-      border-radius: 12px;
-      padding: 24px;
-      transition: transform 0.3s ease, border-color 0.3s ease;
+    /* --- Background Effects --- */
+    .bg {
+      position: fixed; inset: 0; z-index: -2;
+      background: 
+        radial-gradient(circle at 15% 15%, rgba(0, 212, 255, 0.12), transparent 40%),
+        radial-gradient(circle at 85% 85%, rgba(124, 92, 255, 0.08), transparent 40%);
     }
 
-    .card:hover {
-      border-color: rgba(255,255,255,0.2);
-    }
-    /* --- Chen-style rich background (gradient mesh + glow blobs + subtle noise) --- */
-    .bg{
-      position:fixed;
-      inset:0;
-      pointer-events:none;
-      z-index:-2;
-      background:
-         radial-gradient(600px 400px at 20% 15%, rgba(124,92,255,.3), transparent 60%),
-        radial-gradient(800px 500px at 80% 20%, rgba(47,109,246,.25), transparent 60%),
-        linear-gradient(180deg, #070a12 0%, #070a12 35%, #060917 100%);
-      filter:saturate(1.08);
-    }
-        .kpi-value {
-      font-family: 'JetBrains Mono', monospace; /* Data-centric font */
-      color: var(--accent-blue);
-      font-size: 2.2rem;
-      font-weight: 800;
-      letter-spacing: -1px;
+    .noise {
+      position: fixed; inset: 0; z-index: -1; opacity: 0.03; pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
     }
 
-    .kpi-label {
-      color: var(--text-muted);
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      margin-top: 4px;
-    }
-    .noise{
-      position:fixed; inset:0;
-      z-index:-1;
-      pointer-events:none;
-      opacity:.08;
-      mix-blend-mode:overlay;
-      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
-      background-size:240px 240px;
-    }
+    .wrap { max-width: var(--max-width); margin: 0 auto; padding: 40px 60px; }
 
-    a{color:inherit; text-decoration:none}
-    a:hover{color:#fff}
-    .wrap{max-width:var(--max); margin:0 auto; padding:44px 20px 76px;}
-    .topbar{
-      display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;
-      align-items:center;
-      padding:12px 14px;
-      border:1px solid var(--hair);
-      background:rgba(0,0,0,.20);
-      border-radius:999px;
+    /* --- Navigation --- */
+    .topbar {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 8px 16px; margin-bottom: 60px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+      border-radius: 100px;
       backdrop-filter: blur(10px);
     }
-    .topbar .left{display:flex; gap:12px; align-items:center; flex-wrap:wrap;}
-    .badge{
-      display:inline-flex; align-items:center; gap:10px;
-      padding:7px 12px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.14);
-      background:rgba(255,255,255,.06);
-      color:var(--muted);
-      font-size:13px;
+    .topbar .left { display: flex; gap: 8px; }
+    .pill {
+      padding: 6px 14px; border-radius: 100px; font-size: 13px; font-weight: 500;
+      color: var(--text-muted); border: 1px solid transparent; transition: 0.2s; text-decoration: none;
     }
-    .dot{
-      width:7px; height:7px; border-radius:50%;
-      background:linear-gradient(135deg, var(--accent), var(--accent2));
-      box-shadow: 0 0 18px rgba(124,92,255,.55);
-      display:inline-block;
-    }
-    .pill{
-      display:inline-flex; align-items:center; gap:10px;
-      border:1px solid rgba(255,255,255,.14);
-      padding:7px 12px;
-      border-radius:999px;
-      font-size:13px;
-      color:var(--muted);
-      background:rgba(255,255,255,.04);
+    .pill:hover, .pill.active { color: #fff; background: rgba(255, 255, 255, 0.05); border-color: var(--border); }
+    .badge { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-muted); padding: 0 12px; }
+    .dot { width: 8px; height: 8px; background: var(--accent); border-radius: 50%; box-shadow: 0 0 10px var(--accent); }
+
+    /* --- Header --- */
+    .site-header { margin-bottom: 40px; }
+    h1 { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; letter-spacing: -0.04em; margin-bottom: 8px; }
+    .subtitle-hero {
+      font-size: clamp(1.1rem, 1.4vw, 1.4rem);
+      color: var(--text-muted);
+      max-width: 900px;
+      line-height: 1.4;
+      margin-bottom: 40px;
     }
 
-    header{padding:34px 0 18px;}
-    h1{
-      margin:0;
-      font-size:44px;
-      letter-spacing:-0.03em;
-      line-height:1.12;
-    }
-    .subtitle{
-      margin-top:10px;
-      color:var(--muted);
-      font-size:18px;
-      max-width:72ch;
-    }
-    .hero{
-      margin-top:22px;
-      display:grid;
-      grid-template-columns: 1.35fr .65fr;
-      gap:14px;
-      align-items:stretch;
-    }
-    .visuals-grid {
+    /* --- Metrics Bar --- */
+    .metrics-bar {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 16px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      margin-bottom: 48px;
     }
-    @media (max-width: 860px){
-      .hero{grid-template-columns:1fr}
-      h1{font-size:38px}
-    }
-    .card{
-      border:1px solid var(--hair);
-      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+    .metric-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding:18px 18px 16px;
+      padding: 24px;
+      text-align: left;
+    }
+    .metric-card b { display: block; font-size: 28px; color: var(--accent); letter-spacing: -1px; }
+    .metric-card span { font-size: 13px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; }
+
+    /* --- About Grid --- */
+    .about-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 60px; align-items: start; }
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01));
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 48px;
       backdrop-filter: blur(12px);
     }
-    .card strong{font-weight:680}
-    .kicker{
-      text-transform:uppercase;
-      letter-spacing:.14em;
-      font-weight:700;
-      font-size:12px;
-      color:rgba(238,242,255,.62);
-      margin:0 0 10px;
+    .kicker { font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent); font-weight: 700; margin-bottom: 12px; }
+    h2 { font-size: 28px; font-weight: 700; margin-bottom: 24px; letter-spacing: -0.02em; }
+    .bio-intro { font-size: 1.35rem; font-weight: 600; margin-bottom: 24px; color: #fff; line-height: 1.4; }
+    .bio-text p { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 20px; max-width: 70ch; }
+    .bio-text strong { color: #fff; }
+
+    .about-sidebar { display: flex; flex-direction: column; gap: 40px; padding-left: 48px; border-left: 1px solid var(--border); }
+    .sidebar-block h3 { font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 16px; }
+    .sidebar-block ul { list-style: none; padding: 0; }
+    .sidebar-block li { font-size: 15px; margin-bottom: 12px; color: var(--text-main); display: flex; gap: 10px; }
+    .sidebar-block li::before { content: "→"; color: var(--accent); }
+
+    /* --- Responsive --- */
+    @media (max-width: 1024px) {
+      .metrics-bar { grid-template-columns: repeat(2, 1fr); }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-sidebar { padding-left: 0; border-left: none; border-top: 1px solid var(--border); padding-top: 40px; }
     }
-   /* Ensure diagrams fit within card */
-.case .diagram-wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    justify-content: space-between;
-}
-
-.case .diagram-wrapper img {
-    flex: 1 1 48%;    /* take roughly half width of container */
-    max-width: 100%;   /* never exceed parent width */
-    height: auto;      /* maintain aspect ratio */
-    display: block;
-    border-radius: 12px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.25);
-}
-
-/* Optional: constrain card width for large screens */
-.case {
-    max-width: 700px;
-    margin: 0 auto;
-}
-
-.your-work-container-class {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-}
-
-.two-col {
-  display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: 14px;
-  margin-top: 22px;
-}
-
-@media (max-width: 860px) {
-  .two-col {
-    grid-template-columns: 1fr;
-  }
-}
-
-h2 {
-  margin: 0 0 10px;
-  font-size: 22px;
-  letter-spacing: -0.01em;
-}
-    p{margin:0 0 12px}
-
-    .metrics{
-      display:flex; gap:10px; flex-wrap:wrap;
+    @media (max-width: 600px) {
+      .metrics-bar { grid-template-columns: 1fr; }
+      .wrap { padding: 20px; }
     }
-    .chip{
-      display:inline-flex; align-items:baseline; gap:10px;
-      padding:10px 12px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.14);
-      background:rgba(0,0,0,.20);
-    }
-    .chip b{font-size:16px}
-    .chip small{color:var(--muted); font-size:13px}
-
-    .section{margin-top:22px}
-    ul{margin:10px 0 0; padding:0 0 0 18px}
-    li{margin:8px 0; color:rgba(238,242,255,.90)}
-    .grid{
-      display:grid;
-      grid-template-columns:repeat(2, minmax(0, 1fr));
-      gap:14px;
-      margin-top:12px;
-    }
-    @media (max-width: 860px){ .grid{grid-template-columns:1fr} }
-
-    .case{
-      border:1px solid var(--hair);
-      background:rgba(255,255,255,.05);
-      border-radius: var(--radius);
-      padding:16px 16px 14px;
-      transition: transform .12s ease, background .12s ease;
-    }
-    .case:hover{transform: translateY(-2px); background:rgba(255,255,255,.07)}
-    .case h3{margin:0 0 6px; font-size:17px; letter-spacing:-0.01em}
-    .meta{margin:0 0 10px; color:var(--muted); font-size:14px}
-    .tags{display:flex; gap:8px; flex-wrap:wrap}
-    .tag{
-      font-size:12px; color:rgba(238,242,255,.72);
-      border:1px solid rgba(255,255,255,.14);
-      background:rgba(0,0,0,.18);
-      padding:6px 10px;
-      border-radius:999px;
-    }
-
-    .principles{
-      display:grid;
-      grid-template-columns:repeat(2, minmax(0,1fr));
-      gap:10px;
-      margin-top:10px;
-    }
-    @media (max-width: 860px){ .principles{grid-template-columns:1fr} }
-    .principle{
-      border:1px solid rgba(255,255,255,.14);
-      background:rgba(255,255,255,.04);
-      border-radius:14px;
-      padding:12px 12px;
-    }
-    .impact-build {
-  display: grid;
-  grid-template-columns: 1.4fr 1fr; /* impact slightly larger */
-  gap: 16px;
-  align-items: stretch;
-}
-.scroller {
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: minmax(340px, 420px);
-  gap: 14px;
-
-  overflow-x: auto;
-  padding-bottom: 6px;
-
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-}
-
-.scroller::-webkit-scrollbar {
-  height: 8px;
-}
-
-.scroller::-webkit-scrollbar-thumb {
-  background: rgba(255,255,255,.18);
-  border-radius: 999px;
-}
-
-.scroller::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.scroller .case {
-  scroll-snap-align: start;
-}
-
-/* Mobile: stack like a grown-up site should */
-@media (max-width: 860px) {
-  .impact-build {
-    grid-template-columns: 1fr;
-  }
-}
-    .artifacts{
-      display:grid;
-      grid-template-columns:repeat(2, minmax(0,1fr));
-      gap:10px;
-      margin-top:10px;
-    }
-    @media (max-width: 860px){ .artifacts{grid-template-columns:1fr} }
-    .artifact{
-      display:flex; justify-content:space-between; gap:10px; align-items:center;
-      border:1px solid rgba(255,255,255,.14);
-      background:rgba(0,0,0,.18);
-      border-radius:14px;
-      padding:12px 12px;
-    }
-    .artifact span{color:var(--muted); font-size:13px}
-
-    footer{
-      margin-top:26px;
-      padding-top:18px;
-      border-top:1px solid rgba(255,255,255,.12);
-      display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap;
-      color:var(--muted);
-    }
-    .cta{
-      display:inline-flex; gap:10px; align-items:center;
-      padding:12px 14px;
-      border-radius:14px;
-      border:1px solid rgba(124,92,255,.30);
-      background:linear-gradient(135deg, rgba(124,92,255,.16), rgba(47,109,246,.10));
-    }
-    .cta b{color:#fff}
   </style>
-
 </head>
 <body>
   <div class="bg"></div>
@@ -346,52 +129,85 @@ h2 {
   <main class="wrap">
     <nav class="topbar">
       <div class="left">
-        <a class="pill" href="index.html">About</a>
+        <a class="pill active" href="index.html">About</a>
         <a class="pill" href="work/index.html">Work</a>
         <a class="pill" href="views/index.html">AI Philosophy</a>
       </div>
       <div class="right">
-        <span class="badge"><span class="dot"></span> AI Product Leader</span>
+        <span class="badge"><span class="dot"></span> Lead AI Product Manager</span>
         <span class="pill">New York City, NY</span>
       </div>
     </nav>
 
-<header>
-  <h1>Shalin Gosalia</h1>
-  <p style="color:var(--muted); max-width:70ch;">
-    AI Product Leader (VP) specializing in enterprise platforms, RAG pipelines, and governed AI delivery in regulated fintech.
-  </p>
-</header>
-
-<section class="section card" id="about">
-  <p class="kicker">About</p>
-  <h2>Background</h2>
-  <p>
-    13+ years leading AI and investment technology at Morgan Stanley (Wealth Management + E*TRADE), Verizon, ADP, and Fidelity.
-    Platform-first mindset. Governance and outcomes matter more than prototypes.
-  </p>
-</section>
-
-<section class="section card" id="contact">
-  <p class="kicker">Contact</p>
-  <h2>Get in touch</h2>
-  <p style="color:var(--muted); margin-bottom:10px;">
-    I'm always open to connecting with fellow AI enthusiasts, product leaders, and professionals in fintech. Whether you have a question, collaboration idea, or just want to say hello, feel free to reach out!
-  </p>
-  <div style="display:flex; gap:10px; flex-wrap:wrap;">
-    <a class="pill" href="mailto:gosalia.shalin@gmail.com">Email</a>
-    <a class="pill" href="https://www.linkedin.com/in/shalin-gosalia">LinkedIn</a>
-    <a class="pill" href="https://github.com/shalin4788">GitHub</a>
-  </div>
-</section>
-    <footer>
-      <div>
-        <div><b>Contact</b>: <a href="mailto:gosalia.shalin@gmail.com">gosalia.shalin@gmail.com</a></div>
-        <div style="margin-top:4px;font-size:13px">© <span id="y"></span> Shalin Gosalia</div>
+    <header class="site-header">
+      <h1>Shalin Gosalia</h1>
+      <div class="subtitle-hero">
+        Lead AI Product Manager with 13+ years of experience industrializing GenAI & RAG Platforms for regulated wealth tech and investment platforms.
       </div>
+    </header>
+
+    <div class="metrics-bar">
+      <div class="metric-card">
+        <b>25k+</b>
+        <span>Advisors Supported </span>
+      </div>
+      <div class="metric-card">
+        <b>2M+</b>
+        <span>Clients Served </span>
+      </div>
+      <div class="metric-card">
+        <b>$15M+</b>
+        <span>Annual Savings Opportunity [cite: 13, 39]</span>
+      </div>
+      <div class="metric-card">
+        <b>150k</b>
+        <span>Daily AI Deflections </span>
+      </div>
+    </div>
+
+    <section class="section card about-grid" id="about">
+      <div class="about-main">
+        <p class="kicker">Executive Profile</p>
+        <h2>Industrializing AI for the Enterprise</h2>
+        <p class="bio-intro">
+          Translating complex engineering capabilities into business-critical outcomes across wealth management and fintech.
+        </p>
+        <div class="bio-text">
+          <p>
+            I specialize in the end-to-end delivery of <strong>production-grade AI platforms</strong>[cite: 11]. With over a decade of experience, I lead the architectural design and strategic roadmap for agentic AI orchestration layers that unify client and portfolio data.
+          </p>
+          <p>
+            My work is defined by a <strong>Governance-by-Design</strong> philosophy. I establish rigorous evaluation frameworks—including human-in-the-loop review and model performance monitoring—to ensure compliance with Model Risk, Legal, and Compliance requirements[cite: 22].
+          </p>
+          <p>
+            I have a proven track record of modernizing legacy systems, such as transitioning experimental Knowledge Graphs into <strong>GPT-powered RAG pipelines</strong>, to elevate enterprise intelligence[cite: 23].
+          </p>
+        </div>
+      </div>
+
+      <aside class="about-sidebar">
+        <div class="sidebar-block">
+          <h3>Career Highlights</h3>
+          <ul>
+            <li><strong>Scale:</strong> Led 5 AI assistants from pilot to production[cite: 24].</li>
+            <li><strong>Efficiency:</strong> Delivered 20% advisor efficiency gains[cite: 13].</li>
+            <li><strong>Leadership:</strong> Directed 15+ member teams with $2M annual budgets.</li>
+            <li><strong>Impact:</strong> Pioneered Verizon's first AI digital servicing platform[cite: 15].</li>
+          </ul>
+        </div>
+        <div class="sidebar-block">
+          <h3>Core Stack</h3>
+          <p style="font-size: 15px; color: var(--text-main); line-height: 1.8;">
+            Agentic AI & RAG Architecture [cite: 60] • LLMOps • Python [cite: 61] • Vector Databases • Model Governance [cite: 60] • NLP Evaluation[cite: 60].
+          </p>
+        </div>
+      </aside>
+    </section>
+
+    <footer style="margin-top: 80px; padding-top: 40px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; color: var(--text-muted); font-size: 14px;">
+      <p>© 2026 Shalin Gosalia • <a href="mailto:gosalia.shalin@gmail.com" style="color: #fff; text-decoration: none;">gosalia.shalin@gmail.com</a></p>
+      <p>13+ Years of Product Excellence </p>
     </footer>
   </main>
-
-  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
 </body>
 </html>
