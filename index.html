@@ -4,122 +4,65 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Shalin Gosalia — Lead AI Product Manager</title>
-  <meta name="description" content="Lead AI Product Manager — 13+ years scaling GenAI, RAG, and governance in fintech." />
   <style>
     :root {
       --bg-deep: #07090f;
-      --bg-card: rgba(255, 255, 255, 0.03);
       --accent: #00d4ff;
       --text-main: #f5f5f7;
       --text-muted: #a1a1aa;
       --border: rgba(255, 255, 255, 0.1);
-      --max-width: 1440px; /* Expanded for widescreen */
+      --max-width: 1440px;
       --radius: 16px;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    
     body {
       background-color: var(--bg-deep);
       color: var(--text-main);
-      font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif;
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
     }
 
-    /* --- Background Effects --- */
-    .bg {
-      position: fixed; inset: 0; z-index: -2;
-      background: 
-        radial-gradient(circle at 15% 15%, rgba(0, 212, 255, 0.12), transparent 40%),
-        radial-gradient(circle at 85% 85%, rgba(124, 92, 255, 0.08), transparent 40%);
-    }
-
-    .noise {
-      position: fixed; inset: 0; z-index: -1; opacity: 0.03; pointer-events: none;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    }
-
+    .bg { position: fixed; inset: 0; z-index: -2; background: radial-gradient(circle at 15% 15%, rgba(0, 212, 255, 0.12), transparent 40%); }
+    .noise { position: fixed; inset: 0; z-index: -1; opacity: 0.03; pointer-events: none; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
     .wrap { max-width: var(--max-width); margin: 0 auto; padding: 40px 60px; }
 
     /* --- Navigation --- */
     .topbar {
       display: flex; justify-content: space-between; align-items: center;
-      padding: 8px 16px; margin-bottom: 60px;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid var(--border);
-      border-radius: 100px;
-      backdrop-filter: blur(10px);
+      padding: 8px 16px; margin-bottom: 80px;
+      background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border);
+      border-radius: 100px; backdrop-filter: blur(10px);
     }
     .topbar .left { display: flex; gap: 8px; }
-    .pill {
-      padding: 6px 14px; border-radius: 100px; font-size: 13px; font-weight: 500;
-      color: var(--text-muted); border: 1px solid transparent; transition: 0.2s; text-decoration: none;
-    }
+    .pill { padding: 6px 14px; border-radius: 100px; font-size: 13px; color: var(--text-muted); text-decoration: none; transition: 0.2s; }
     .pill:hover, .pill.active { color: #fff; background: rgba(255, 255, 255, 0.05); border-color: var(--border); }
-    .badge { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-muted); padding: 0 12px; }
-    .dot { width: 8px; height: 8px; background: var(--accent); border-radius: 50%; box-shadow: 0 0 10px var(--accent); }
 
-    /* --- Header --- */
-    .site-header { margin-bottom: 40px; }
-    h1 { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; letter-spacing: -0.04em; margin-bottom: 8px; }
-    .subtitle-hero {
-      font-size: clamp(1.1rem, 1.4vw, 1.4rem);
-      color: var(--text-muted);
-      max-width: 900px;
-      line-height: 1.4;
-      margin-bottom: 40px;
+    /* --- Hero Section --- */
+    .hero { display: grid; grid-template-columns: 1.3fr 1fr; gap: 60px; align-items: start; margin-bottom: 80px; }
+    h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 800; letter-spacing: -0.04em; line-height: 1.1; margin-bottom: 24px; }
+    .hero-text { font-size: 1.15rem; color: var(--text-muted); margin-bottom: 24px; }
+    
+    .social-links { display: flex; gap: 12px; margin-top: 32px; }
+    .social-link { 
+      color: var(--text-main); text-decoration: none; font-size: 13px; font-weight: 600;
+      padding: 10px 20px; border-radius: 100px; border: 1px solid var(--border);
+      background: rgba(255,255,255,0.02); transition: 0.2s ease;
     }
+    .social-link:hover { border-color: var(--accent); color: var(--accent); background: rgba(0, 212, 255, 0.05); }
 
-    /* --- Metrics Bar --- */
-    .metrics-bar {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-      margin-bottom: 48px;
-    }
-    .metric-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 24px;
-      text-align: left;
-    }
-    .metric-card b { display: block; font-size: 28px; color: var(--accent); letter-spacing: -1px; }
-    .metric-card span { font-size: 13px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; }
-
-    /* --- About Grid --- */
-    .about-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 60px; align-items: start; }
-    .card {
-      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01));
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 48px;
-      backdrop-filter: blur(12px);
-    }
+    /* --- Impact Card --- */
+    .card { background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: var(--radius); padding: 40px; backdrop-filter: blur(12px); }
     .kicker { font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent); font-weight: 700; margin-bottom: 12px; }
-    h2 { font-size: 28px; font-weight: 700; margin-bottom: 24px; letter-spacing: -0.02em; }
-    .bio-intro { font-size: 1.35rem; font-weight: 600; margin-bottom: 24px; color: #fff; line-height: 1.4; }
-    .bio-text p { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 20px; max-width: 70ch; }
-    .bio-text strong { color: #fff; }
+    .metrics-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 24px; }
+    .metric b { display: block; font-size: 28px; color: var(--accent); }
+    .metric span { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
 
-    .about-sidebar { display: flex; flex-direction: column; gap: 40px; padding-left: 48px; border-left: 1px solid var(--border); }
-    .sidebar-block h3 { font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 16px; }
-    .sidebar-block ul { list-style: none; padding: 0; }
-    .sidebar-block li { font-size: 15px; margin-bottom: 12px; color: var(--text-main); display: flex; gap: 10px; }
-    .sidebar-block li::before { content: "→"; color: var(--accent); }
+    footer { margin-top: 80px; padding-top: 40px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; color: var(--text-muted); font-size: 14px; }
 
-    /* --- Responsive --- */
-    @media (max-width: 1024px) {
-      .metrics-bar { grid-template-columns: repeat(2, 1fr); }
-      .about-grid { grid-template-columns: 1fr; }
-      .about-sidebar { padding-left: 0; border-left: none; border-top: 1px solid var(--border); padding-top: 40px; }
-    }
-    @media (max-width: 600px) {
-      .metrics-bar { grid-template-columns: 1fr; }
-      .wrap { padding: 20px; }
-    }
+    @media (max-width: 1024px) { .hero { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
@@ -133,80 +76,49 @@
         <a class="pill" href="work/index.html">Work</a>
         <a class="pill" href="views/index.html">AI Philosophy</a>
       </div>
-      <div class="right">
-        <span class="badge"><span class="dot"></span> Lead AI Product Manager</span>
-        <span class="pill">New York City, NY</span>
-      </div>
+      <div class="right"><span style="color:var(--text-muted); font-size: 13px;">Lead AI Product Manager</span></div>
     </nav>
 
-    <header class="site-header">
-      <h1>Shalin Gosalia</h1>
-      <div class="subtitle-hero">
-        Lead AI Product Manager with 13+ years of experience industrializing GenAI & RAG Platforms for regulated wealth tech and investment platforms.
-      </div>
-    </header>
-
-    <div class="metrics-bar">
-      <div class="metric-card">
-        <b>25k+</b>
-        <span>Advisors Supported </span>
-      </div>
-      <div class="metric-card">
-        <b>2M+</b>
-        <span>Clients Served </span>
-      </div>
-      <div class="metric-card">
-        <b>$15M+</b>
-        <span>Annual Savings Opportunity [cite: 13, 39]</span>
-      </div>
-      <div class="metric-card">
-        <b>150k</b>
-        <span>Daily AI Deflections </span>
-      </div>
-    </div>
-
-    <section class="section card about-grid" id="about">
-      <div class="about-main">
-        <p class="kicker">Executive Profile</p>
-        <h2>Industrializing AI for the Enterprise</h2>
-        <p class="bio-intro">
-          Translating complex engineering capabilities into business-critical outcomes across wealth management and fintech.
+    <section class="hero">
+      <div class="content">
+        <p class="kicker">Executive Summary</p>
+        <h1>Industrializing AI for the Enterprise.</h1>
+        
+        <p class="hero-text">
+          I am a <strong>Lead AI Product Manager</strong> with 13+ years of experience specialized in building and scaling production-grade AI systems within highly regulated fintech and wealth management environments.
         </p>
-        <div class="bio-text">
-          <p>
-            I specialize in the end-to-end delivery of <strong>production-grade AI platforms</strong>[cite: 11]. With over a decade of experience, I lead the architectural design and strategic roadmap for agentic AI orchestration layers that unify client and portfolio data.
-          </p>
-          <p>
-            My work is defined by a <strong>Governance-by-Design</strong> philosophy. I establish rigorous evaluation frameworks—including human-in-the-loop review and model performance monitoring—to ensure compliance with Model Risk, Legal, and Compliance requirements[cite: 22].
-          </p>
-          <p>
-            I have a proven track record of modernizing legacy systems, such as transitioning experimental Knowledge Graphs into <strong>GPT-powered RAG pipelines</strong>, to elevate enterprise intelligence[cite: 23].
-          </p>
+
+        <p class="hero-text">
+          Currently at <strong>Morgan Stanley</strong>, I lead the industrialization of Generative AI, successfully architecting and deploying <strong>five distinct AI assistants</strong> firm-wide. My work focuses on transitioning experimental pilots into robust, GPT-powered RAG pipelines that deliver measurable alpha for 25k financial advisors.
+        </p>
+
+        <p class="hero-text">
+          Previously, I led a <strong>15+ member cross-functional team</strong> at <strong>ADP</strong>, managing a <strong>$2M annual budget</strong> to modernize NLP orchestration. At <strong>Verizon</strong>, I pioneered an AI-powered digital servicing platform that deflected 150k calls daily and lifted NPS by 15%.
+        </p>
+
+        <div class="social-links">
+          <a href="https://www.linkedin.com/in/shalingosalia/" class="social-link" target="_blank">LinkedIn</a>
+          <a href="https://github.com/shalin4788" class="social-link" target="_blank">GitHub</a>
+          <a href="mailto:gosalia.shalin@gmail.com" class="social-link">Email</a>
         </div>
       </div>
 
-      <aside class="about-sidebar">
-        <div class="sidebar-block">
-          <h3>Career Highlights</h3>
-          <ul>
-            <li><strong>Scale:</strong> Led 5 AI assistants from pilot to production[cite: 24].</li>
-            <li><strong>Efficiency:</strong> Delivered 20% advisor efficiency gains[cite: 13].</li>
-            <li><strong>Leadership:</strong> Directed 15+ member teams with $2M annual budgets.</li>
-            <li><strong>Impact:</strong> Pioneered Verizon's first AI digital servicing platform[cite: 15].</li>
-          </ul>
+      <div class="card">
+        <p class="kicker">Proven Impact</p>
+        <div class="metrics-grid">
+          <div class="metric"><b>$15M</b><span>Annual Savings (MS)</span></div>
+          <div class="metric"><b>150k</b><span>Daily Deflections (VZW)</span></div>
+          <div class="metric"><b>15+</b><span>Team Members Led</span></div>
+          <div class="metric"><b>15%</b><span>NPS Lift (VZW)</span></div>
+          <div class="metric"><b>2M+</b><span>Clients Served</span></div>
+          <div class="metric"><b>$2M</b><span>Annual Budget (ADP)</span></div>
         </div>
-        <div class="sidebar-block">
-          <h3>Core Stack</h3>
-          <p style="font-size: 15px; color: var(--text-main); line-height: 1.8;">
-            Agentic AI & RAG Architecture [cite: 60] • LLMOps • Python [cite: 61] • Vector Databases • Model Governance [cite: 60] • NLP Evaluation[cite: 60].
-          </p>
-        </div>
-      </aside>
+      </div>
     </section>
 
-    <footer style="margin-top: 80px; padding-top: 40px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; color: var(--text-muted); font-size: 14px;">
-      <p>© 2026 Shalin Gosalia • <a href="mailto:gosalia.shalin@gmail.com" style="color: #fff; text-decoration: none;">gosalia.shalin@gmail.com</a></p>
-      <p>13+ Years of Product Excellence </p>
+    <footer>
+      <p>© 2026 Shalin Gosalia</p>
+      <p>Lead AI Product Manager • Industrializing the Future</p>
     </footer>
   </main>
 </body>
