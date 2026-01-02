@@ -45,11 +45,34 @@
     h1 { font-size: clamp(2.5rem, 5vw, 4.2rem); font-weight: 800; letter-spacing: -0.04em; line-height: 1.1; margin-bottom: 24px; }
     .hero-text { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 20px; max-width: 700px; }
     
-    .social-links { display: flex; gap: 12px; margin-top: 32px; }
+    /* --- Action Row --- */
+    .cta-row { display: flex; align-items: center; gap: 16px; margin-top: 32px; flex-wrap: wrap; }
+    
+    .btn-primary { 
+      background: var(--accent); 
+      color: #000; 
+      font-weight: 700; 
+      border: none;
+      padding: 12px 28px; 
+      border-radius: 100px; 
+      text-decoration: none; 
+      font-size: 14px;
+      transition: 0.2s transform;
+      display: inline-flex;
+      align-items: center;
+    }
+    .btn-primary:hover { transform: translateY(-2px); filter: brightness(1.1); }
+
     .social-link { 
-      color: var(--text-main); text-decoration: none; font-size: 13px; font-weight: 600;
-      padding: 10px 24px; border-radius: 100px; border: 1px solid var(--border);
-      background: rgba(255,255,255,0.02); transition: 0.2s ease;
+      color: var(--text-main); 
+      text-decoration: none; 
+      font-size: 13px; 
+      font-weight: 600;
+      padding: 11px 24px; 
+      border-radius: 100px; 
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.02); 
+      transition: 0.2s ease;
     }
     .social-link:hover { border-color: var(--accent); color: var(--accent); background: rgba(0, 212, 255, 0.05); }
 
@@ -108,10 +131,11 @@
           Previously, I led a <strong>15+ member cross-functional team</strong> at <strong>ADP</strong>, managing a <strong>$2M annual budget</strong> to modernize NLP orchestration. At <strong>Verizon</strong>, I pioneered an AI-powered digital servicing platform that deflected 150k calls daily and delivered a 15% NPS lift.
         </p>
 
-        <div class="social-links">
+        <div class="cta-row">
+          <a href="mailto:gosalia.shalin@gmail.com" class="social-link">Email Me</a>
+          <a href="https://calendly.com/gosalia-shalin" class="btn-primary" target="_blank">Book Time With Me</a>
           <a href="https://www.linkedin.com/in/shalin-gosalia/" class="social-link" target="_blank">LinkedIn</a>
           <a href="https://github.com/shalin4788" class="social-link" target="_blank">GitHub</a>
-          <a href="mailto:gosalia.shalin@gmail.com" class="social-link">Email</a>
         </div>
       </div>
 
@@ -128,7 +152,7 @@
       </div>
     </section>
 
-      <footer>
+    <footer>
       <p>© 2026 Shalin Gosalia • <a href="mailto:gosalia.shalin@gmail.com" style="color:#fff; text-decoration:none;">gosalia.shalin@gmail.com</a></p>
       <p>Lead AI Product Manager</p>
     </footer>
