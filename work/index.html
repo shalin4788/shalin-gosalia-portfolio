@@ -42,7 +42,6 @@
     .pill { padding: 6px 14px; border-radius: 100px; font-size: 13px; color: var(--text-muted); text-decoration: none; transition: 0.2s; }
     .pill:hover, .pill.active { color: #fff; background: rgba(255, 255, 255, 0.05); border-color: var(--border); }
     
-    /* New Nav Styles for Location and Status */
     .nav-info { display: flex; align-items: center; gap: 12px; font-size: 13px; color: var(--text-muted); }
     .dot { width: 4px; height: 4px; background: var(--border); border-radius: 50%; }
 
@@ -61,12 +60,10 @@
     .metric b { display: block; font-size: 26px; color: var(--accent); text-shadow: 0 0 10px rgba(0, 212, 255, 0.2); }
     .metric span { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
     
-    /* Orchestration Stack Component */
     .ecosystem-container { margin-top: 15px; padding: 16px; background: rgba(0, 212, 255, 0.05); border: 1px solid rgba(0, 212, 255, 0.2); border-radius: 12px; display: flex; flex-direction: column; gap: 10px; }
     .eco-label { color: var(--accent); text-transform: uppercase; font-size: 10px; letter-spacing: 0.1em; font-weight: 700; }
     .eco-layer { display: flex; justify-content: space-around; align-items: center; padding: 8px; border-radius: 8px; background: rgba(255, 255, 255, 0.03); font-size: 10px; font-weight: 600; border: 1px solid var(--border); position: relative; overflow: hidden; }
 
-    /* Pulse animation for Observability */
     .pulse-layer::after {
         content: ""; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
         background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.1), transparent);
@@ -82,7 +79,18 @@
     .case-card { flex: 0 0 550px; scroll-snap-align: start; min-height: 580px; display: flex; flex-direction: column; }
     
     .diagram-wrapper { display: flex; gap: 12px; margin-top: auto; height: 240px; }
-    .diagram-wrapper img { flex: 1; width: 50%; height: 100%; object-fit: cover; border-radius: 12px; border: 1px solid var(--border); background: rgba(0,0,0,0.2); }
+    .diagram-wrapper img { 
+      flex: 1; 
+      width: 50%; 
+      height: 100%; 
+      object-fit: cover; 
+      border-radius: 12px; 
+      border: 1px solid var(--border); 
+      background: rgba(0,0,0,0.2); 
+      cursor: zoom-in; /* Added for readability feedback */
+      transition: opacity 0.2s;
+    }
+    .diagram-wrapper img:hover { opacity: 0.9; }
     .diagram-wrapper.single img { width: 100%; flex: none; }
 
     /* --- ROW 3: Principles --- */
@@ -96,6 +104,10 @@
         .impact-row, .principles-grid { grid-template-columns: 1fr; }
         .case-card { flex: 0 0 85%; }
     }
+
+    /* Styles for the Zoomed Image Overlay */
+    .medium-zoom-overlay { z-index: 100; background: var(--bg-deep) !important; opacity: 0.9 !important; }
+    .medium-zoom-image--opened { z-index: 101; }
   </style>
 </head>
 <body>
@@ -161,21 +173,20 @@
     </div>
 
     <div class="section">
-      <p class="kicker">Selected Projects</p>
+      <p class="kicker">Selected Projects (Scroll horizontally)</p>
       <div class="scroll-container">
         
         <div class="card case-card">
           <div>
             <h3>Morgan Stanley GenAI</h3>
-            <p style="font-size: 14px; color: var(--text-muted); margin-top: 8px;">Owned Platform strategy and delivery across enterprise AI platform used by <strong>~25K financial advisors, client service teams, and ~2M external clients</strong> — delivering <strong>~20% advisor workflow efficiency gains</strong> supporting NNA growth for Wealth business and <strong>~$15M in annual cost savings opportunities</strong> for ETRADE’s digital business. Architected and scaled <strong>five distinct AI assistants</strong> from pilot to production. Directly led a <strong>15+ member cross-functional team</strong> and managed a <strong>$2M annual budget.</strong></p>
+            <span class="kicker" style="color: var(--text-muted);">Wealth and Investment Management Platform</span>
+            <p style="font-size: 14px; color: var(--text-muted); margin-top: 8px;">Owned Platform strategy and delivery across enterprise AI platform used by <strong> 25K financial advisors, client service teams, and 2M external clients - </strong>delivering <strong>20% advisor workflow efficiency gains</strong> supporting NNA growth for Wealth business and <strong> $15M in annual cost savings opportunities</strong> for ETRADE’s digital business. Architected and scaled <strong>five distinct AI assistants</strong> from pilot to production. Directly led a <strong>15+ member cross-functional team</strong> and managed a <strong>$2M annual budget.</strong></p>
           </div>
           <div class="diagram-wrapper">
             <img src="../images/rag_architecture.png" alt="RAG Architecture Diagram">
             <img src="../images/ai_advisor_workflow.png" alt="AI-Assisted Advisor Workflow Diagram">
           </div>
         </div>
-        
-        
 
         <div class="card case-card">
           <div>
@@ -187,22 +198,25 @@
           </div>
         </div>
         
-
         <div class="card case-card">
           <div>
             <h3>Verizon AI Assistant</h3>
-            <p style="font-size: 14px; color: var(--text-muted); margin-top: 8px;">Pioneered the first AI-powered digital servicing platform, deflecting 150k calls daily and delivering a <strong>15% lift in NPS</strong>.</p>
+            <p style="font-size: 14px; color: var(--text-muted); margin-top: 8px;">Pioneered Verizon’s first enterprise AI-powered digital automation platform, leading the product development lifecycle from 0-to-1 to enable intelligent customer routing, deflecting 150k calls daily and delivering a <strong>15% lift in NPS</strong>.</p>
           </div>
           <div class="diagram-wrapper single">
-              <img src="../images/verizon_deflection_flow.png" alt="Verizon IVR to Digital Deflection Flow">
+            <img src="../images/verizon_deflection_flow.png" alt="Verizon IVR to Digital Deflection Flow">
           </div>
         </div>
-        
 
         <div class="card case-card">
           <div>
-            <h3>Fidelity Goal-Based Planning</h3>
-            <p style="font-size: 14px; color: var(--text-muted); margin-top: 8px;">Owned roadmap across onboarding, account opening, and coaching flows for enterprise wealth management.</p>
+            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+              <h3>Fidelity Goal-Based Planning</h3>
+              <span class="kicker" style="color: var(--text-muted);">Wealth Platform</span>
+            </div>
+            <p style="font-size: 14px; color: var(--text-muted); margin-top: 8px;">
+              Product Owner for Fidelity’s <strong>first goal-based Planning & Investment platform (FPPA™)</strong> and digital advice platform (FidelityGo™). Owned the full-lifecycle roadmap for onboarding, portfolio construction, and financial coaching workflows.
+            </p>
           </div>
           <div class="diagram-wrapper single">
              <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2832" alt="Fidelity">
@@ -235,5 +249,14 @@
       <p>Lead AI Product Manager</p>
     </footer>
   </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script>
+  <script>
+    mediumZoom('.diagram-wrapper img', {
+      margin: 24,
+      background: '#07090f',
+      scrollOffset: 0,
+    });
+  </script>
 </body>
 </html>
