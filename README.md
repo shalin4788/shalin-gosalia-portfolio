@@ -1,6 +1,6 @@
 # 🚀 AI Product Leadership Portfolio | Shalin Gosalia
 
-**VP of Product building Enterprise GenAI Platforms & RAG Systems.**
+**Lead Product Manager building Enterprise GenAI Platforms & RAG Systems.**
 A high-fidelity showcase of product leadership in regulated environments (Wealth Management, DTC, & Fintech).
 
 [Live Portfolio](https://shalin4788.github.io/shalin-gosalia-portfolio/work/index.html)
