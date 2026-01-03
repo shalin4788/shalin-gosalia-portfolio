@@ -41,6 +41,10 @@
     .topbar .left { display: flex; gap: 8px; }
     .pill { padding: 6px 14px; border-radius: 100px; font-size: 13px; color: var(--text-muted); text-decoration: none; transition: 0.2s; }
     .pill:hover, .pill.active { color: #fff; background: rgba(255, 255, 255, 0.05); border-color: var(--border); }
+    
+    /* New Nav Styles for Location and Status */
+    .nav-info { display: flex; align-items: center; gap: 12px; font-size: 13px; color: var(--text-muted); }
+    .dot { width: 4px; height: 4px; background: var(--border); border-radius: 50%; }
 
     /* --- Header --- */
     .site-header { margin-bottom: 40px; border-bottom: 1px solid var(--border); padding-bottom: 32px; }
@@ -105,7 +109,16 @@
         <a class="pill active" href="index.html">Work</a>
         <a class="pill" href="../views/index.html">Philosophy</a>
       </div>
-      <div class="right"><span class="badge" style="color:var(--text-muted); font-size: 13px;">Lead AI Product Manager</span></div>
+      <div class="right">
+        <div class="nav-info">
+          <span style="font-weight: 600; color: #fff;">Lead AI Product Manager</span>
+          <div class="dot"></div>
+          <span style="display: flex; align-items: center; gap: 6px;">
+            <span style="width: 6px; height: 6px; background: #10b981; border-radius: 50%; box-shadow: 0 0 8px #10b981;"></span>
+            New York City, NY
+          </span>
+        </div>
+      </div>
     </nav>
 
     <header class="site-header">

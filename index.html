@@ -39,6 +39,9 @@
     .topbar .left { display: flex; gap: 8px; }
     .pill { padding: 6px 14px; border-radius: 100px; font-size: 13px; color: var(--text-muted); text-decoration: none; transition: 0.2s; }
     .pill:hover, .pill.active { color: #fff; background: rgba(255, 255, 255, 0.05); border-color: var(--border); }
+    
+    .nav-info { display: flex; align-items: center; gap: 12px; font-size: 13px; color: var(--text-muted); }
+    .dot { width: 4px; height: 4px; background: var(--border); border-radius: 50%; }
 
     /* --- Hero Layout --- */
     .hero { display: grid; grid-template-columns: 1.3fr 1fr; gap: 60px; align-items: start; margin-bottom: 80px; }
@@ -111,7 +114,16 @@
         <a class="pill" href="work/index.html">Work</a>
         <a class="pill" href="views/index.html">Philosophy</a>
       </div>
-      <div class="right"><span style="color:var(--text-muted); font-size: 13px;">Lead AI Product Manager</span></div>
+      <div class="right">
+        <div class="nav-info">
+          <span style="font-weight: 600; color: #fff;">Lead AI Product Manager</span>
+          <div class="dot"></div>
+          <span style="display: flex; align-items: center; gap: 6px;">
+            <span style="width: 6px; height: 6px; background: #10b981; border-radius: 50%; box-shadow: 0 0 8px #10b981;"></span>
+            New York City, NY
+          </span>
+        </div>
+      </div>
     </nav>
 
     <section class="hero">
@@ -119,11 +131,11 @@
         <p class="kicker">Professional Summary</p>
         <h1>Industrializing AI for the Modern Enterprise.</h1>
         
-        <p class="hero-text">I am a <strong> Lead AI Product Manager</strong> with 13+ years of experience specialized in architecting production-grade AI systems within fintech and wealth management. At Morgan Stanley, I led the industrialization of GenAI, successfully scaling <strong>five distinct AI assistants</strong> firm-wide. My focus was on transitioning experimental pilots into robust, GPT-powered RAG pipelines for 25,000 financial advisors.</p></p>
+        <p class="hero-text">I am a <strong>Lead AI Product Manager</strong> with 13+ years of experience specialized in architecting production-grade AI systems within fintech and wealth management. At <strong>Morgan Stanley</strong>, I lead the industrialization of GenAI, successfully scaling <strong>5 distinct AI assistants</strong> firm-wide. My focus was on transitioning experimental POC's and pilots into robust, <strong> GPT-powered RAG and Agentic AI pipelines </strong>for <strong>25K financial advisors and research analysts </strong>at scale.</p>
 
-        <p class="hero-text">At <strong> ADP</strong>, I built an enterprise-grade AI orchestration platform and API layer integrating IBM Watson’s NLU capabilities to power <strong> asynchronous messaging, AI-driven workflows, and digital self-service assistants </strong> across ADP’s HR, Payroll, and HCM products.</p>
+        <p class="hero-text">At <strong>ADP</strong>, I built an enterprise-grade AI orchestration platform and API layer integrating IBM Watson’s NLU capabilities to power <strong> asynchronous messaging </strong>, AI-driven workflows, and digital <strong> self-service AI assistants</strong> across ADP’s HR, Payroll, and HCM products.</p>
 
-        <p class="hero-text">Previously, at <strong>Verizon</strong>, I pioneered an AI-powered digital servicing platform that deflected 150k calls daily and delivered a 15% NPS lift.</p>
+        <p class="hero-text">Previously, at <strong>Verizon</strong>, I pioneered an <strong>NLP/NLU AI-powered digital servicing platform</strong> that deflected <strong>150k calls </strong>daily and delivered a <strong> NPS lift.</strong></p>
 
         <div class="cta-row">
           <a href="mailto:gosalia.shalin@gmail.com" class="social-link">Email Me</a>
