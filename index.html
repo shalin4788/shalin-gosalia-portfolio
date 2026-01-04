@@ -15,6 +15,7 @@
       --radius: 16px;
     }
 
+    /* Core Styles */
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       background-color: var(--bg-deep);
@@ -29,13 +30,25 @@
     .noise { position: fixed; inset: 0; z-index: -1; opacity: 0.03; pointer-events: none; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
     .wrap { max-width: var(--max-width); margin: 0 auto; padding: 40px 60px; }
 
-    /* --- Navigation --- */
+    /* --- Standardized Navigation --- */
     .topbar {
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 8px 16px; margin-bottom: 60px;
-      background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border);
-      border-radius: 100px; backdrop-filter: blur(10px);
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center;
+      padding: 12px 24px; /* Exact match to Work page */
+      margin-bottom: 60px;
+      background: rgba(255, 255, 255, 0.03); 
+      border: 1px solid var(--border);
+      border-radius: 100px; 
+      backdrop-filter: blur(10px);
+      width: 100%;
     }
+
+    /* Anchors for Centering */
+    .nav-left, .nav-center, .nav-right { flex: 1; display: flex; align-items: center; }
+    .nav-center { justify-content: center; }
+    .nav-right { justify-content: flex-end; }
+
     .topbar .left { display: flex; gap: 8px; }
     .pill { padding: 6px 14px; border-radius: 100px; font-size: 13px; color: var(--text-muted); text-decoration: none; transition: 0.2s; }
     .pill:hover, .pill.active { color: #fff; background: rgba(255, 255, 255, 0.05); border-color: var(--border); }
@@ -43,52 +56,46 @@
     .nav-info { display: flex; align-items: center; gap: 12px; font-size: 13px; color: var(--text-muted); }
     .dot { width: 4px; height: 4px; background: var(--border); border-radius: 50%; }
 
-    /* --- Hero Layout --- */
+    /* --- Mobile Responsive Nav --- */
+    @media (max-width: 850px) {
+        .topbar {
+            flex-direction: column;
+            height: auto;
+            border-radius: 24px;
+            padding: 20px;
+            gap: 16px;
+        }
+        .nav-left, .nav-center, .nav-right {
+            flex: none !important;
+            width: 100%;
+            justify-content: center !important;
+        }
+        .nav-info { flex-direction: column; gap: 4px; }
+        .dot { display: none; }
+        .topbar > div:not(:last-child) {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 12px;
+        }
+        .wrap { padding: 40px 20px; }
+    }
+
+    /* --- Hero & Impact Content --- */
     .hero { display: grid; grid-template-columns: 1.3fr 1fr; gap: 60px; align-items: start; margin-bottom: 80px; }
     h1 { font-size: clamp(2.5rem, 5vw, 4.2rem); font-weight: 800; letter-spacing: -0.04em; line-height: 1.1; margin-bottom: 24px; }
     .hero-text { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 20px; max-width: 700px; }
     
-    /* --- Action Row --- */
     .cta-row { display: flex; align-items: center; gap: 16px; margin-top: 32px; flex-wrap: wrap; }
-    
-    .btn-primary { 
-      background: var(--accent); 
-      color: #000; 
-      font-weight: 700; 
-      border: none;
-      padding: 12px 28px; 
-      border-radius: 100px; 
-      text-decoration: none; 
-      font-size: 14px;
-      transition: 0.2s transform;
-      display: inline-flex;
-      align-items: center;
-    }
+    .btn-primary { background: var(--accent); color: #000; font-weight: 700; border: none; padding: 12px 28px; border-radius: 100px; text-decoration: none; font-size: 14px; transition: 0.2s transform; display: inline-flex; align-items: center; }
     .btn-primary:hover { transform: translateY(-2px); filter: brightness(1.1); }
 
-    .social-link { 
-      color: var(--text-main); 
-      text-decoration: none; 
-      font-size: 13px; 
-      font-weight: 600;
-      padding: 11px 24px; 
-      border-radius: 100px; 
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,0.02); 
-      transition: 0.2s ease;
-    }
+    .social-link { color: var(--text-main); text-decoration: none; font-size: 13px; font-weight: 600; padding: 11px 24px; border-radius: 100px; border: 1px solid var(--border); background: rgba(255,255,255,0.02); transition: 0.2s ease; }
     .social-link:hover { border-color: var(--accent); color: var(--accent); background: rgba(0, 212, 255, 0.05); }
 
-    /* --- Impact Table/Grid --- */
     .impact-card { background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: var(--radius); padding: 40px; backdrop-filter: blur(12px); height: 100%; }
     .kicker { font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent); font-weight: 700; margin-bottom: 12px; }
     
-    .metrics-table { 
-      display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 24px; 
-    }
-    .metric-item { 
-      padding-bottom: 16px; border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    }
+    .metrics-table { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 24px; }
+    .metric-item { padding-bottom: 16px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
     .metric-item b { display: block; font-size: 28px; color: var(--accent); line-height: 1.2; }
     .metric-item span { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-top: 4px; }
 
@@ -101,39 +108,6 @@
     @media (max-width: 768px) {
         .metrics-table { grid-template-columns: repeat(2, 1fr); }
     }
-
-    /* Mobile-Specific Navigation Fixes */
-    @media (max-width: 850px) {
-        .topbar {
-            flex-direction: column;
-            height: auto;
-            border-radius: 24px;
-            padding: 20px;
-            gap: 16px;
-        }
-
-        /* Allow each section to take full width and center content */
-        .topbar > div {
-            flex: none !important;
-            width: 100%;
-            justify-content: center !important;
-        }
-
-        .nav-info {
-            flex-direction: column; /* Stacks Lead PM and NYC */
-            gap: 4px;
-        }
-
-        .dot { display: none; } /* Hide the dot separator when stacked */
-
-        /* Optional: Add a subtle divider between the sections */
-        .topbar > div:not(:last-child) {
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            padding-bottom: 12px;
-        }
-
-        .hero { margin-bottom: 40px; }
-    }
   </style>
 </head>
 <body>
@@ -141,22 +115,22 @@
   <div class="noise"></div>
 
   <main class="wrap">
-  <nav class="topbar">
-      <div style="flex: 1; display: flex; justify-content: flex-start;">
-        <div class="left" style="display: flex; gap: 8px;">
+    <nav class="topbar">
+      <div class="nav-left">
+        <div class="left">
           <a class="pill active" href="index.html">About</a>
           <a class="pill" href="work/index.html">Work</a>
           <a class="pill" href="views/index.html">Philosophy</a>
         </div>
       </div>
 
-      <div style="flex: 1; display: flex; justify-content: center;">
+      <div class="nav-center">
         <span style="font-weight: 700; font-size: 13px; letter-spacing: 0.15em; text-transform: uppercase; color: #fff; white-space: nowrap;">
           Shalin Gosalia
         </span>
       </div>
 
-      <div style="flex: 1; display: flex; justify-content: flex-end;">
+      <div class="nav-right">
         <div class="nav-info">
           <span style="font-weight: 600; color: #fff; white-space: nowrap;">Lead AI Product Manager</span>
           <div class="dot"></div>
