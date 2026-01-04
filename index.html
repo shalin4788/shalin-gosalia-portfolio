@@ -101,6 +101,39 @@
     @media (max-width: 768px) {
         .metrics-table { grid-template-columns: repeat(2, 1fr); }
     }
+
+    /* Mobile-Specific Navigation Fixes */
+    @media (max-width: 850px) {
+        .topbar {
+            flex-direction: column;
+            height: auto;
+            border-radius: 24px;
+            padding: 20px;
+            gap: 16px;
+        }
+
+        /* Allow each section to take full width and center content */
+        .topbar > div {
+            flex: none !important;
+            width: 100%;
+            justify-content: center !important;
+        }
+
+        .nav-info {
+            flex-direction: column; /* Stacks Lead PM and NYC */
+            gap: 4px;
+        }
+
+        .dot { display: none; } /* Hide the dot separator when stacked */
+
+        /* Optional: Add a subtle divider between the sections */
+        .topbar > div:not(:last-child) {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 12px;
+        }
+
+        .hero { margin-bottom: 40px; }
+    }
   </style>
 </head>
 <body>
@@ -108,32 +141,32 @@
   <div class="noise"></div>
 
   <main class="wrap">
-  <nav class="topbar" style="display: flex; justify-content: space-between; align-items: center; padding: 12px 24px;">
-    <div style="flex: 1; display: flex; justify-content: flex-start;">
-      <div class="left" style="display: flex; gap: 8px;">
-        <a class="pill active" href="index.html">About</a>
-        <a class="pill" href="work/index.html">Work</a>
-        <a class="pill" href="views/index.html">Philosophy</a>
+  <nav class="topbar">
+      <div style="flex: 1; display: flex; justify-content: flex-start;">
+        <div class="left" style="display: flex; gap: 8px;">
+          <a class="pill active" href="index.html">About</a>
+          <a class="pill" href="work/index.html">Work</a>
+          <a class="pill" href="views/index.html">Philosophy</a>
+        </div>
       </div>
-    </div>
 
-    <div style="flex: 1; display: flex; justify-content: center;">
-      <span style="font-weight: 700; font-size: 13px; letter-spacing: 0.15em; text-transform: uppercase; color: #fff; white-space: nowrap;">
-        Shalin Gosalia
-      </span>
-    </div>
-
-    <div style="flex: 1; display: flex; justify-content: flex-end;">
-      <div class="nav-info" style="white-space: nowrap;">
-        <span style="font-weight: 600; color: #fff;">Lead AI Product Manager</span>
-        <div class="dot"></div>
-        <span style="display: flex; align-items: center; gap: 6px;">
-          <span style="width: 6px; height: 6px; background: #10b981; border-radius: 50%; box-shadow: 0 0 8px #10b981;"></span>
-          NYC
+      <div style="flex: 1; display: flex; justify-content: center;">
+        <span style="font-weight: 700; font-size: 13px; letter-spacing: 0.15em; text-transform: uppercase; color: #fff; white-space: nowrap;">
+          Shalin Gosalia
         </span>
       </div>
-    </div>
-  </nav>
+
+      <div style="flex: 1; display: flex; justify-content: flex-end;">
+        <div class="nav-info">
+          <span style="font-weight: 600; color: #fff; white-space: nowrap;">Lead AI Product Manager</span>
+          <div class="dot"></div>
+          <span style="display: flex; align-items: center; gap: 6px; white-space: nowrap;">
+            <span style="width: 6px; height: 6px; background: #10b981; border-radius: 50%; box-shadow: 0 0 8px #10b981;"></span>
+            NYC
+          </span>
+        </div>
+      </div>
+    </nav>
 
     <section class="hero">
       <div class="intro-content">

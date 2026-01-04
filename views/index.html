@@ -96,6 +96,38 @@
       .phil-grid { grid-template-columns: 1fr; }
       .wrap { padding: 30px 20px; }
     }
+    /* Mobile-Specific Navigation Fixes */
+    @media (max-width: 850px) {
+        .topbar {
+            flex-direction: column;
+            height: auto;
+            border-radius: 24px;
+            padding: 20px;
+            gap: 16px;
+        }
+
+        /* Allow each section to take full width and center content */
+        .topbar > div {
+            flex: none !important;
+            width: 100%;
+            justify-content: center !important;
+        }
+
+        .nav-info {
+            flex-direction: column; /* Stacks Lead PM and NYC */
+            gap: 4px;
+        }
+
+        .dot { display: none; } /* Hide the dot separator when stacked */
+
+        /* Optional: Add a subtle divider between the sections */
+        .topbar > div:not(:last-child) {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 12px;
+        }
+
+        .hero { margin-bottom: 40px; }
+    }
   </style>
 </head>
 <body>
