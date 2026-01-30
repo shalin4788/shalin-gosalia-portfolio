@@ -34,11 +34,10 @@
     /* --- Navigation --- */
     .topbar {
       display: flex; justify-content: space-between; align-items: center;
-      padding: 8px 16px; margin-bottom: 60px;
+      padding: 12px 24px; margin-bottom: 60px;
       background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border);
       border-radius: 100px; backdrop-filter: blur(10px);
     }
-    /* Ensure name stays centered on desktop, but flows on mobile */
     .topbar > div {
       flex: 1 1 auto;
     }
@@ -91,7 +90,7 @@
       border-radius: 12px; 
       border: 1px solid var(--border); 
       background: rgba(0,0,0,0.2); 
-      cursor: zoom-in; /* Added for readability feedback */
+      cursor: zoom-in; 
       transition: opacity 0.2s;
     }
     .diagram-wrapper img:hover { opacity: 0.9; }
@@ -108,8 +107,9 @@
         .impact-row, .principles-grid { grid-template-columns: 1fr; }
         .case-card { flex: 0 0 85%; }
     }
-    /* Mobile-Specific Navigation Fixes */
+
     @media (max-width: 850px) {
+        .wrap { padding: 40px 20px; } /* Fixed Margin Sync */
         .topbar {
             flex-direction: column;
             height: auto;
@@ -117,30 +117,22 @@
             padding: 20px;
             gap: 16px;
         }
-
-        /* Allow each section to take full width and center content */
         .topbar > div {
             flex: none !important;
             width: 100%;
             justify-content: center !important;
         }
-
         .nav-info {
-            flex-direction: column; /* Stacks Lead PM and NYC */
+            flex-direction: column;
             gap: 4px;
         }
-
-        .dot { display: none; } /* Hide the dot separator when stacked */
-
-        /* Optional: Add a subtle divider between the sections */
+        .dot { display: none; }
         .topbar > div:not(:last-child) {
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             padding-bottom: 12px;
         }
-
-        .hero { margin-bottom: 40px; }
     }
-    /* Styles for the Zoomed Image Overlay */
+
     .medium-zoom-overlay { z-index: 100; background: var(--bg-deep) !important; opacity: 0.9 !important; }
     .medium-zoom-image--opened { z-index: 101; }
   </style>
@@ -150,7 +142,7 @@
   <div class="noise"></div>
 
   <main class="wrap">
-  <nav class="topbar" style="display: flex; justify-content: space-between; align-items: center; padding: 12px 24px;">
+  <nav class="topbar">
     <div style="flex: 1; display: flex; justify-content: flex-start;">
       <div class="left" style="display: flex; gap: 8px;">
         <a class="pill" href="../index.html">About</a>
@@ -171,7 +163,7 @@
         <div class="dot"></div>
         <span style="display: flex; align-items: center; gap: 6px;">
           <span style="width: 6px; height: 6px; background: #10b981; border-radius: 50%; box-shadow: 0 0 8px #10b981;"></span>
-          NYC/CA
+          NYC / CA
         </span>
       </div>
     </div>
@@ -291,7 +283,6 @@
              <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2832" alt="Fidelity">
           </div>
         </div>
-
       </div> 
     </div>
 
