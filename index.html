@@ -15,7 +15,6 @@
       --radius: 16px;
     }
 
-    /* Core Styles - cosmetic edits*/
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       background-color: var(--bg-deep);
@@ -30,83 +29,53 @@
     .noise { position: fixed; inset: 0; z-index: -1; opacity: 0.03; pointer-events: none; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
     .wrap { max-width: var(--max-width); margin: 0 auto; padding: 40px 60px; }
 
-    /* --- Standardized Navigation --- */
     .topbar {
-      display: flex; 
-      justify-content: space-between; 
-      align-items: center;
-      padding: 12px 24px; /* Exact match to Work page */
-      margin-bottom: 60px;
-      background: rgba(255, 255, 255, 0.03); 
-      border: 1px solid var(--border);
-      border-radius: 100px; 
-      backdrop-filter: blur(10px);
-      width: 100%;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 12px 24px; margin-bottom: 60px;
+      background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border);
+      border-radius: 100px; backdrop-filter: blur(10px);
     }
-
-    /* Anchors for Centering */
     .nav-left, .nav-center, .nav-right { flex: 1; display: flex; align-items: center; }
     .nav-center { justify-content: center; }
     .nav-right { justify-content: flex-end; }
-
     .topbar .left { display: flex; gap: 8px; }
     .pill { padding: 6px 14px; border-radius: 100px; font-size: 13px; color: var(--text-muted); text-decoration: none; transition: 0.2s; }
     .pill:hover, .pill.active { color: #fff; background: rgba(255, 255, 255, 0.05); border-color: var(--border); }
-    
     .nav-info { display: flex; align-items: center; gap: 12px; font-size: 13px; color: var(--text-muted); }
     .dot { width: 4px; height: 4px; background: var(--border); border-radius: 50%; }
 
-    /* --- Mobile Responsive Nav --- */
-    @media (max-width: 850px) {
-        .topbar {
-            flex-direction: column;
-            height: auto;
-            border-radius: 24px;
-            padding: 20px;
-            gap: 16px;
-        }
-        .nav-left, .nav-center, .nav-right {
-            flex: none !important;
-            width: 100%;
-            justify-content: center !important;
-        }
-        .nav-info { flex-direction: column; gap: 4px; }
-        .dot { display: none; }
-        .topbar > div:not(:last-child) {
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            padding-bottom: 12px;
-        }
-        .wrap { padding: 40px 20px; }
-    }
-
-    /* --- Hero & Impact Content --- */
-    .hero { display: grid; grid-template-columns: 1.3fr 1fr; gap: 60px; align-items: start; margin-bottom: 80px; }
+    .hero { display: grid; grid-template-columns: 1.3fr 1fr; gap: 60px; align-items: stretch; margin-bottom: 80px; }
     h1 { font-size: clamp(2.5rem, 5vw, 4.2rem); font-weight: 800; letter-spacing: -0.04em; line-height: 1.1; margin-bottom: 24px; }
     .hero-text { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 20px; max-width: 700px; }
     
     .cta-row { display: flex; align-items: center; gap: 16px; margin-top: 32px; flex-wrap: wrap; }
     .btn-primary { background: var(--accent); color: #000; font-weight: 700; border: none; padding: 12px 28px; border-radius: 100px; text-decoration: none; font-size: 14px; transition: 0.2s transform; display: inline-flex; align-items: center; }
     .btn-primary:hover { transform: translateY(-2px); filter: brightness(1.1); }
-
     .social-link { color: var(--text-main); text-decoration: none; font-size: 13px; font-weight: 600; padding: 11px 24px; border-radius: 100px; border: 1px solid var(--border); background: rgba(255,255,255,0.02); transition: 0.2s ease; }
     .social-link:hover { border-color: var(--accent); color: var(--accent); background: rgba(0, 212, 255, 0.05); }
 
-    .impact-card { background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: var(--radius); padding: 40px; backdrop-filter: blur(12px); height: 100%; }
+    /* Balanced and enlarged Impact Card */
+    .impact-card { background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: var(--radius); padding: 50px 40px; backdrop-filter: blur(12px); display: flex; flex-direction: column; }
     .kicker { font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent); font-weight: 700; margin-bottom: 12px; }
     
-    .metrics-table { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 24px; }
-    .metric-item { padding-bottom: 16px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
-    .metric-item b { display: block; font-size: 28px; color: var(--accent); line-height: 1.2; }
-    .metric-item span { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-top: 4px; }
+    .metrics-table { display: grid; grid-template-columns: 1fr; gap: 32px; margin-top: 32px; flex-grow: 1; }
+    .metric-item { padding-bottom: 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
+    .metric-item b { display: block; font-size: 42px; color: var(--accent); line-height: 1; margin-bottom: 8px; text-shadow: 0 0 15px rgba(0, 212, 255, 0.1); }
+    .metric-item span { font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; display: block; }
 
     footer { margin-top: 80px; padding-top: 40px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; color: var(--text-muted); font-size: 14px; }
 
     @media (max-width: 1100px) { 
         .hero { grid-template-columns: 1fr; }
-        .metrics-table { grid-template-columns: repeat(3, 1fr); }
-    }
-    @media (max-width: 768px) {
         .metrics-table { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 850px) {
+        .topbar { flex-direction: column; height: auto; border-radius: 24px; padding: 20px; gap: 16px; }
+        .nav-left, .nav-center, .nav-right { flex: none !important; width: 100%; justify-content: center !important; }
+        .nav-info { flex-direction: column; gap: 4px; }
+        .dot { display: none; }
+        .topbar > div:not(:last-child) { border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding-bottom: 12px; }
+        .wrap { padding: 40px 20px; }
     }
   </style>
 </head>
@@ -123,20 +92,15 @@
           <a class="pill" href="views/index.html">Philosophy</a>
         </div>
       </div>
-
       <div class="nav-center">
-        <span style="font-weight: 700; font-size: 13px; letter-spacing: 0.15em; text-transform: uppercase; color: #fff; white-space: nowrap;">
-          Shalin Gosalia
-        </span>
+        <span style="font-weight: 700; font-size: 13px; letter-spacing: 0.15em; text-transform: uppercase; color: #fff;">Shalin Gosalia</span>
       </div>
-
       <div class="nav-right">
         <div class="nav-info">
-          <span style="font-weight: 600; color: #fff; white-space: nowrap;">Lead AI Product Manager</span>
+          <span style="font-weight: 600; color: #fff;">Lead AI Product Manager</span>
           <div class="dot"></div>
-          <span style="display: flex; align-items: center; gap: 6px; white-space: nowrap;">
-            <span style="width: 6px; height: 6px; background: #10b981; border-radius: 50%; box-shadow: 0 0 8px #10b981;"></span>
-            NYC
+          <span style="display: flex; align-items: center; gap: 6px;">
+            <span style="width: 6px; height: 6px; background: #10b981; border-radius: 50%; box-shadow: 0 0 8px #10b981;"></span>NYC
           </span>
         </div>
       </div>
@@ -149,13 +113,20 @@
         
         <p class="hero-text">I am a <strong>Product Leader</strong> with 13+ years of experience specialized in architecting production-grade AI systems within fintech and wealth management. At <strong>Morgan Stanley</strong>, I lead the industrialization of GenAI, successfully scaling <strong>5 distinct AI assistants</strong> firm-wide. My focus is on transitioning experimental POC's and pilots into modernized advisor and investment workflows by building robust, <strong> GPT-powered RAG and Agentic AI pipelines </strong>for <strong>25K financial advisors and research analysts </strong>at scale.</p>
 
+        <div style="border-left: 2px solid var(--accent); padding-left: 20px; margin: 30px 0;">
+          <p class="hero-text" style="font-style: italic; margin-bottom: 0;">
+            My journey from building "experimental wrappers" to enterprise systems has culminated in the incubation of <strong>Pran.ai</strong>—a stealth vision focused on <strong>Agentic Agency</strong>. I am currently architecting a context-aware ecosystem prototype that shifts AI from a passive responder to a proactive life-event orchestrator.
+          </p>
+        </div>
+
         <p class="hero-text">At <strong>ADP</strong>, I built an enterprise-grade AI orchestration platform and API layer integrating IBM Watson’s NLU capabilities to power <strong> asynchronous messaging </strong>, AI-driven workflows, and digital <strong> self-service AI assistants</strong> across ADP’s HR, Payroll, and HCM products.</p>
 
         <p class="hero-text">Previously, at <strong>Verizon</strong>, I pioneered an <strong>NLP/NLU AI-powered digital servicing platform</strong> that deflected <strong>150k calls </strong>daily and delivered a <strong> NPS lift.</strong></p>
 
         <div class="cta-row">
           <a href="mailto:gosalia.shalin@gmail.com" class="social-link">Email Me</a>
-          <a href="https://calendly.com/gosalia-shalin" class="btn-primary" target="_blank">Book Time With Me</a>
+          <a href="https://life-path-navigator--gosaliashalin.replit.app" class="btn-primary" target="_blank">Explore Product Vision ↗</a>
+          <a href="https://calendly.com/gosalia-shalin" class="social-link" target="_blank">Schedule Time With Me</a>
           <a href="https://www.linkedin.com/in/shalin-gosalia/" class="social-link" target="_blank">LinkedIn</a>
           <a href="https://github.com/shalin4788" class="social-link" target="_blank">GitHub</a>
         </div>
@@ -165,12 +136,11 @@
         <p class="kicker">Impact Metrics</p>
         <div class="metrics-table">
           <div class="metric-item"><b>$15M</b><span>Annual Savings (Morgan Stanley)</span></div>
-          <div class="metric-item"><b>20%</b><span>Advisor Productivity Gains (Morgan Stanley)</span></div>
+          <div class="metric-item"><b>20%</b><span>Advisor Productivity Gains</span></div>
           <div class="metric-item"><b>150k</b><span>Daily Call Deflections (Verizon)</span></div>
-          <div class="metric-item"><b>15+</b><span>Squad Members Led (Morgan Stanley)</span></div>
+          <div class="metric-item"><b>15+</b><span>Squad Members Managed</span></div>
           <div class="metric-item"><b>15%</b><span>NPS Lift (Verizon)</span></div>
-          <div class="metric-item"><b>2M+</b><span>Wealth Clients (Morgan Stanley)</span></div>
-          <div class="metric-item"><b>$2M</b><span>Annual Budget (Morgan Stanley)</span></div>
+          <div class="metric-item"><b>2M+</b><span>Wealth Clients Reached</span></div>
         </div>
       </div>
     </section>
