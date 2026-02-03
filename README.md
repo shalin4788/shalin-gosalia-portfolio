@@ -6,6 +6,11 @@ A high-fidelity showcase of product leadership in regulated environments (Wealth
 [Live Portfolio](https://shalin4788.github.io/shalin-gosalia-portfolio/work/index.html)
 
 ---
+## 🛡️ Governance & Compliance
+This project is architected with a **Compliance-First** mindset.
+* **EU AI Act:** Formally audited and classified as **Limited Risk**.
+* **Transparency:** All agent-led workflows include clear disclosure of AI interaction.
+* **Governance:** Full details available in our [GOVERNANCE.md](./GOVERNANCE.md).
 
 ## 🎯 The Mission
 This portfolio serves as a "Product Proof of Concept" for my leadership style: **Governance-by-design, measurable scale, and technical depth.** It highlights my experience shipping GenAI, RAG, and NLU systems within complex regulatory frameworks (Morgan Stanley, E*TRADE).
