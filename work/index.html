@@ -75,8 +75,7 @@
     @keyframes sweep { 0% { left: -100%; } 100% { left: 100%; } }
 
     /* --- ROW 2: Scrollable Case Studies --- */
-    /* Force overflow-x to scroll so scrollbar is always visible */
-    .scroll-container { display: flex; gap: 24px; overflow-x: scroll !important; padding: 10px 0 30px 0; scroll-snap-type: x mandatory; scrollbar-width: auto; -webkit-overflow-scrolling: touch; width: 100%; }
+    .scroll-container { display: flex; gap: 24px; overflow-x: auto; padding: 10px 0 30px 0; scroll-snap-type: x mandatory; scrollbar-width: auto; -webkit-overflow-scrolling: touch; width: 100%; }
     .scroll-container::-webkit-scrollbar { height: 8px; display: block; }
     .scroll-container::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 10px; }
     
@@ -110,7 +109,7 @@
     }
 
     @media (max-width: 850px) {
-        .wrap { padding: 40px 20px; }
+        .wrap { padding: 40px 20px; } /* Fixed Margin Sync */
         .topbar {
             flex-direction: column;
             height: auto;
@@ -287,54 +286,54 @@
       </div> 
     </div>
 
-    <div class="section" style="margin-top: 60px;">
-      <p class="kicker">Product Vision & Strategy Case Studies (Scroll horizontally)</p>
-      <div class="scroll-container">
-        
-        <div class="card case-card">
-          <div>
-            <div style="display: flex; justify-content: space-between; align-items: center;">
-              <a href="https://elevate-the-unified-gena-dv8id6d.gamma.site/" target="_blank" style="text-decoration:none; color:inherit; display: flex; align-items: center; gap: 8px;">
-                  <h3 style="transition: color 0.2s;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='inherit'">
-                    Elevate: Internal GenAI Platform ↗
-                  </h3>
-              </a>
-              <span class="pill" style="background: rgba(0, 212, 255, 0.1); color: var(--accent); border: 1px solid rgba(0, 212, 255, 0.2); font-size: 10px;">Strategic Roadmap</span>
-            </div>
-            <p style="font-size: 14px; color: var(--text-muted); margin-top: 12px; margin-bottom: 24px;">
-              Designed to solve the "Vertical Silo" bottleneck. This framework outlines the transition to a <strong>horizontal, self-service architecture</strong> that allows enterprise teams to deploy AI capabilities rapidly while maintaining centralized security, cost-control, and institutional guardrails.
-            </p>
-          </div>
-          <div class="diagram-wrapper single" style="height: auto !important; min-height: 0; display: flex; justify-content: center; margin-top: auto;">
-              <img src="../images/internal_genai_platform.png" 
-                  alt="Elevate: GenAI Platform for an Enterprise Internal users" 
-                  style="width: 100%; height: auto !important; object-fit: contain; border-radius: 12px; border: 1px solid var(--border); background: rgba(255,255,255,0.02);">
-          </div>
+<div class="section" style="margin-top: 60px;">
+  <p class="kicker">Product Vision & Strategy Case Studies (Scroll horizontally)</p>
+  <div class="scroll-container">
+    
+    <div class="card case-card">
+      <div>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <a href="https://elevate-the-unified-gena-dv8id6d.gamma.site/" target="_blank" style="text-decoration:none; color:inherit; display: flex; align-items: center; gap: 8px;">
+              <h3 style="transition: color 0.2s;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='inherit'">
+                Elevate: Internal GenAI Platform ↗
+              </h3>
+          </a>
+          <span class="pill" style="background: rgba(0, 212, 255, 0.1); color: var(--accent); border: 1px solid rgba(0, 212, 255, 0.2); font-size: 10px;">Strategic Roadmap</span>
         </div>
-
-        <div class="card case-card">
-          <div>
-            <div style="display: flex; justify-content: space-between; align-items: center;">
-              <a href="https://gamma.app/docs/From-Passive-RAG-to-Agentic-Execution-c3xqrzg88hjfu0h?mode=doc" target="_blank" style="text-decoration:none; color:inherit; display: flex; align-items: center; gap: 8px;">
-                <h3 style="transition: color 0.2s;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='inherit'">
-                  Agentic Orchestration: Beyond RAG ↗
-                </h3>
-              </a>
-              <span class="pill" style="background: rgba(0, 212, 255, 0.1); color: var(--accent); border: 1px solid rgba(0, 212, 255, 0.2); font-size: 10px;">AI Architecture</span>
-            </div>
-            <p style="font-size: 14px; color: var(--text-muted); margin-top: 12px; margin-bottom: 24px;">
-              Architected a <strong>Multi-Agent Ecosystem</strong> to move from passive retrieval to autonomous execution. Implementing a <strong>Hierarchical Orchestration pattern</strong>, the system utilizes a Manager agent to coordinate worker agents for real-time report generation, CRM integration, and automated client synthesis.
-            </p>
-          </div>
-          <div class="diagram-wrapper single" style="height: auto !important; min-height: 0; display: flex; justify-content: center; margin-top: auto;">
-              <img src="../images/agentic_orchestration_diagram.png" 
-                  alt="Agentic Orchestration Source Diagram" 
-                  style="width: 100%; height: auto !important; object-fit: contain; border-radius: 12px; border: 1px solid var(--border); background: rgba(255,255,255,0.02);">
-          </div>
-        </div>
-
+        <p style="font-size: 14px; color: var(--text-muted); margin-top: 12px; margin-bottom: 24px;">
+          Designed to solve the "Vertical Silo" bottleneck. This framework outlines the transition to a <strong>horizontal, self-service architecture</strong> that allows enterprise teams to deploy AI capabilities rapidly while maintaining centralized security, cost-control, and institutional guardrails.
+        </p>
+      </div>
+      <div class="diagram-wrapper single" style="height: auto !important; min-height: 0; display: flex; justify-content: center; margin-top: auto;">
+          <img src="../images/internal_genai_platform.png" 
+              alt="Elevate: GenAI Platform for an Enterprise Internal users" 
+              style="width: 100%; height: auto !important; object-fit: contain; border-radius: 12px; border: 1px solid var(--border); background: rgba(255,255,255,0.02);">
       </div>
     </div>
+
+    <div class="card case-card">
+      <div>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <a href="https://gamma.app/docs/From-Passive-RAG-to-Agentic-Execution-c3xqrzg88hjfu0h?mode=doc" target="_blank" style="text-decoration:none; color:inherit; display: flex; align-items: center; gap: 8px;">
+            <h3 style="transition: color 0.2s;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='inherit'">
+              Agentic Orchestration: Beyond RAG ↗
+            </h3>
+          </a>
+          <span class="pill" style="background: rgba(0, 212, 255, 0.1); color: var(--accent); border: 1px solid rgba(0, 212, 255, 0.2); font-size: 10px;">AI Architecture</span>
+        </div>
+        <p style="font-size: 14px; color: var(--text-muted); margin-top: 12px; margin-bottom: 24px;">
+          Architected a <strong>Multi-Agent Ecosystem</strong> to move from passive retrieval to autonomous execution. Implementing a <strong>Hierarchical Orchestration pattern</strong>, the system utilizes a Manager agent to coordinate worker agents for real-time report generation, CRM integration, and automated client synthesis.
+        </p>
+      </div>
+      <div class="diagram-wrapper single" style="height: auto !important; min-height: 0; display: flex; justify-content: center; margin-top: auto;">
+          <img src="../images/agentic_orchestration_diagram.png" 
+              alt="Agentic Orchestration Source Diagram" 
+              style="width: 100%; height: auto !important; object-fit: contain; border-radius: 12px; border: 1px solid var(--border); background: rgba(255,255,255,0.02);">
+      </div>
+    </div>
+
+  </div>
+</div>
 
     <div class="section" style="margin-top: 40px;">
       <p class="kicker">Operational DNA</p>
