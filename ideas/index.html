@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Product Ideas — Shalin Gosalia</title>
+  <style>
+    :root {
+      --bg-deep: #07090f;
+      --bg-card: rgba(255, 255, 255, 0.03);
+      --accent: #00d4ff;
+      --text-main: #f5f5f7;
+      --text-muted: #a1a1aa;
+      --border: rgba(255, 255, 255, 0.1);
+      --max-width: 1440px;
+      --radius: 16px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body {
+      background-color: var(--bg-deep);
+      color: var(--text-main);
+      font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    .bg { position: fixed; inset: 0; z-index: -2; background: radial-gradient(circle at 15% 15%, rgba(0, 212, 255, 0.12), transparent 40%); }
+    .noise { position: fixed; inset: 0; z-index: -1; opacity: 0.03; pointer-events: none; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+    .wrap { max-width: var(--max-width); margin: 0 auto; padding: 40px 60px; }
+
+    /* --- Navigation --- */
+    .topbar {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 12px 24px; margin-bottom: 60px;
+      background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border);
+      border-radius: 100px; backdrop-filter: blur(10px);
+    }
+    .topbar > div { flex: 1 1 auto; }
+    .topbar .left { display: flex; gap: 8px; }
+    .pill { padding: 6px 14px; border-radius: 100px; font-size: 13px; color: var(--text-muted); text-decoration: none; transition: 0.2s; }
+    .pill:hover, .pill.active { color: #fff; background: rgba(255, 255, 255, 0.05); border-color: var(--border); }
+    
+    .nav-info { display: flex; align-items: center; gap: 12px; font-size: 13px; color: var(--text-muted); }
+    .dot { width: 4px; height: 4px; background: var(--border); border-radius: 50%; }
+
+    /* --- Header --- */
+    .site-header { margin-bottom: 40px; border-bottom: 1px solid var(--border); padding-bottom: 32px; }
+    h1 { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; letter-spacing: -0.04em; margin-bottom: 8px; }
+
+    /* --- Sections & Cards --- */
+    .card { background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: var(--radius); padding: 32px; backdrop-filter: blur(12px); display: flex; flex-direction: column; }
+    .kicker { font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent); font-weight: 700; margin-bottom: 12px; }
+    h2 { font-size: 24px; margin-bottom: 16px; }
+
+    /* --- Scrollable Case Studies --- */
+    .scroll-container { display: flex; gap: 24px; overflow-x: auto; padding: 10px 0 30px 0; scroll-snap-type: x mandatory; width: 100%; }
+    .scroll-container::-webkit-scrollbar { height: 8px; display: block; }
+    .scroll-container::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 10px; }
+    
+    .case-card { flex: 0 0 600px; scroll-snap-align: start; min-height: 520px; display: flex; flex-direction: column; }
+    
+    .diagram-wrapper { display: flex; gap: 12px; margin-top: auto; }
+    .diagram-wrapper img { 
+      width: 100%; 
+      height: auto; 
+      object-fit: contain; 
+      border-radius: 12px; 
+      border: 1px solid var(--border); 
+      background: rgba(255,255,255,0.02); 
+      cursor: zoom-in; 
+    }
+
+    footer { margin-top: 80px; padding-top: 40px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; color: var(--text-muted); font-size: 14px; }
+    
+    @media (max-width: 850px) {
+        .wrap { padding: 40px 20px; }
+        .topbar { flex-direction: column; border-radius: 24px; padding: 20px; gap: 16px; }
+        .case-card { flex: 0 0 90%; }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg"></div>
+  <div class="noise"></div>
+
+  <main class="wrap">
+    <nav class="topbar">
+      <div style="flex: 1; display: flex; justify-content: flex-start;">
+        <div class="left">
+          <a class="pill" href="../index.html">About</a>
+          <a class="pill" href="../work/index.html">Work</a>
+          <a class="pill active" href="../ideas/index.html">Product Ideas</a>
+          <a class="pill" href="../views/index.html">Philosophy</a>
+        </div>
+      </div>
+
+      <div style="flex: 1; display: flex; justify-content: center;">
+        <span style="font-weight: 700; font-size: 13px; letter-spacing: 0.15em; text-transform: uppercase; color: #fff;">
+          Shalin Gosalia
+        </span>
+      </div>
+
+      <div style="flex: 1; display: flex; justify-content: flex-end;">
+        <div class="nav-info">
+          <span style="font-weight: 600; color: #fff;">Lead AI Product Manager</span>
+          <div class="dot"></div>
+          <span style="display: flex; align-items: center; gap: 6px;">
+            <span style="width: 6px; height: 6px; background: #10b981; border-radius: 50%; box-shadow: 0 0 8px #10b981;"></span>
+            NYC / CA
+          </span>
+        </div>
+      </div>
+    </nav>
+
+    <header class="site-header">
+      <h1>Product Ideas and Prototypes</h1>
+      <p style="color: var(--text-muted); font-size: 1.2rem;">Architecting proactive agentic ecosystems and high-yield financial intelligence platforms.</p>
+    </header>
+
+    <div class="section">
+      <p class="kicker">Stealth & Visionary Concepts (Scroll horizontally)</p>
+      <div class="scroll-container">
+        
+        <div class="card case-card">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+              <a href="https://pranai-your-personalized-life-path-navigator--gosaliashalin.replit.app" target="_blank" style="text-decoration:none; color:inherit;">
+                <h3 style="font-size: 22px; transition: color 0.2s;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='inherit'">
+                  Pran.ai: Agentic Intelligence ↗
+                </h3>
+              </a>
+              <span class="pill" style="background: rgba(0, 212, 255, 0.1); color: var(--accent); border: 1px solid rgba(0, 212, 255, 0.2); font-size: 10px;">Stealth Idea</span>
+            </div>
+            <span class="kicker" style="color: var(--text-muted); margin-top: 4px; display: block;">Context-Aware Life Intelligence Ecosystem</span>
+            <p style="font-size: 14px; color: var(--text-muted); margin-top: 12px;">
+              Replacing passive tracking with a proactive ecosystem. Utilizing a central <strong>Orchestrator</strong> to ingest high-stakes life events—Career pivots, Founder transitions, or Job loss—to trigger a coordinated response:
+            </p>
+            <ul style="font-size: 13px; color: var(--text-muted); margin-top: 12px; padding-left: 18px;">
+              <li><strong>The Planner:</strong> Maps multi-horizon goals with next best actions.</li>
+              <li><strong>The Matchmaker:</strong> Scouts human capital (VCs, Recruiters) to accelerate outcomes.</li>
+              <li><strong>The Sentinel:</strong> Manages operational logistics and proactive nudges.</li>
+            </ul>
+          </div>
+          <div class="diagram-wrapper" style="margin-top: 24px;">
+            <img src="../images/pran_ai_workflow.png" alt="Pran.ai Agentic Architecture">
+          </div>
+        </div>
+
+        <div class="card case-card">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+              <a href="https://replit.com/@gosaliashalin/Asset-Manager" target="_blank" style="text-decoration:none; color:inherit;">
+                <h3 style="font-size: 22px; transition: color 0.2s;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='inherit'">
+                  YieldCard: Asset Intelligence ↗
+                </h3>
+              </a>
+              <span class="pill" style="background: rgba(0, 212, 255, 0.1); color: var(--accent); border: 1px solid rgba(0, 212, 255, 0.2); font-size: 10px;">Stealth Prototype</span>
+            </div>
+            <span class="kicker" style="color: var(--text-muted); margin-top: 4px; display: block;">Autonomous High-Yield Portfolio Management</span>
+            <p style="font-size: 14px; color: var(--text-muted); margin-top: 12px;">
+              A proactive credit intelligence platform that eliminates "Value Leakage." An <strong>Orchestrator</strong> monitors real-time spend and lifestyle shifts to direct specialized agents:
+            </p>
+            <ul style="font-size: 13px; color: var(--text-muted); margin-top: 12px; padding-left: 18px;">
+              <li><strong>The Scout:</strong> Monitors categories to recommend the next best card for reward capture.</li>
+              <li><strong>The Enforcer:</strong> Tracks itemized credits and fires nudges to ensure no benefit expires.</li>
+              <li><strong>The Auditor:</strong> Quantifies realized ROI vs. fees to deliver "Keep or Cancel" verdicts.</li>
+            </ul>
+          </div>
+          <div class="diagram-wrapper" style="margin-top: 24px;">
+            <img src="../images/yield_card_mockup.png" alt="YieldCard Agentic Architecture Diagram">
+          </div>
+        </div>
+
+      </div> 
+    </div>
+
+    <div class="section" style="margin-top: 60px;">
+      <p class="kicker">The Vision</p>
+      <div class="card" style="padding: 40px;">
+        <h2>Agentic vs. Passive</h2>
+        <p style="color: var(--text-muted); max-width: 800px;">
+          Traditional apps wait for the user to check a dashboard. My vision for the <strong>Agentic Ecosystem</strong> shifts this paradigm: the system works in the background, reasoning through complex personal context to provide high-stakes decision support before the user even realizes they need it.
+        </p>
+      </div>
+    </div>
+
+    <footer>
+      <p>© 2026 Shalin Gosalia • <a href="mailto:gosalia.shalin@gmail.com" style="color:#fff; text-decoration:none;">gosalia.shalin@gmail.com</a></p>
+      <p>Lead AI Product Manager</p>
+    </footer>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script>
+  <script>
+    mediumZoom('.diagram-wrapper img', { margin: 24, background: '#07090f', scrollOffset: 0 });
+  </script>
+</body>
+</html>
