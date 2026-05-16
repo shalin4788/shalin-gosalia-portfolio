@@ -1,0 +1,459 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Shalin Gosalia × Optn / DealPath</title>
+  <style>
+    :root {
+      --bg-deep: #07090f;
+      --accent: #00d4ff;
+      --accent-warm: #f59e0b;
+      --text-main: #f5f5f7;
+      --text-muted: #a1a1aa;
+      --border: rgba(255, 255, 255, 0.1);
+      --max-width: 1440px;
+      --radius: 16px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg-deep);
+      color: var(--text-main);
+      font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    .bg { position: fixed; inset: 0; z-index: -2; background: radial-gradient(circle at 15% 15%, rgba(0, 212, 255, 0.10), transparent 40%), radial-gradient(circle at 85% 80%, rgba(245, 158, 11, 0.06), transparent 40%); }
+    .noise { position: fixed; inset: 0; z-index: -1; opacity: 0.03; pointer-events: none; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+    .wrap { max-width: var(--max-width); margin: 0 auto; padding: 40px 60px; }
+
+    /* --- Navigation --- */
+    .topbar {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 12px 24px; margin-bottom: 60px;
+      background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border);
+      border-radius: 100px; backdrop-filter: blur(10px);
+    }
+    .nav-left, .nav-center, .nav-right { flex: 1; display: flex; align-items: center; }
+    .nav-center { justify-content: center; }
+    .nav-right { justify-content: flex-end; }
+    .topbar .left { display: flex; gap: 8px; }
+    .pill { padding: 6px 14px; border-radius: 100px; font-size: 13px; color: var(--text-muted); text-decoration: none; transition: 0.2s; }
+    .pill:hover { color: #fff; background: rgba(255, 255, 255, 0.05); }
+    .pill.active { color: var(--accent-warm); background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.2); }
+    .nav-info { display: flex; align-items: center; gap: 12px; font-size: 13px; color: var(--text-muted); }
+    .dot { width: 4px; height: 4px; background: var(--border); border-radius: 50%; }
+
+    /* --- Interview Banner --- */
+    .interview-banner {
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.08), rgba(0, 212, 255, 0.05));
+      border: 1px solid rgba(245, 158, 11, 0.25);
+      border-radius: var(--radius);
+      padding: 20px 28px;
+      margin-bottom: 48px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .banner-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent-warm); box-shadow: 0 0 10px var(--accent-warm); flex-shrink: 0; animation: pulse-dot 2s infinite; }
+    @keyframes pulse-dot { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.6; transform: scale(0.8); } }
+
+    /* --- Hero --- */
+    .hero { display: grid; grid-template-columns: 1.3fr 1fr; gap: 60px; align-items: start; margin-bottom: 80px; }
+    h1 { font-size: clamp(2.4rem, 4.5vw, 3.8rem); font-weight: 800; letter-spacing: -0.04em; line-height: 1.1; margin-bottom: 24px; }
+    .accent-warm { color: var(--accent-warm); }
+    .hero-text { font-size: 1.05rem; color: var(--text-muted); margin-bottom: 16px; }
+
+    .kicker { font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent); font-weight: 700; margin-bottom: 12px; }
+    .kicker.warm { color: var(--accent-warm); }
+
+    .cta-row { display: flex; align-items: center; gap: 12px; margin-top: 28px; flex-wrap: wrap; }
+    .btn-primary { background: var(--accent-warm); color: #000; font-weight: 700; border: none; padding: 12px 28px; border-radius: 100px; text-decoration: none; font-size: 14px; transition: 0.2s transform; display: inline-flex; align-items: center; }
+    .btn-primary:hover { transform: translateY(-2px); filter: brightness(1.1); }
+    .social-link { color: var(--text-main); text-decoration: none; font-size: 13px; font-weight: 600; padding: 11px 20px; border-radius: 100px; border: 1px solid var(--border); background: rgba(255,255,255,0.02); transition: 0.2s ease; }
+    .social-link:hover { border-color: var(--accent); color: var(--accent); background: rgba(0, 212, 255, 0.05); }
+
+    /* --- Fit Card --- */
+    .fit-card { background: rgba(245, 158, 11, 0.04); border: 1px solid rgba(245, 158, 11, 0.2); border-radius: var(--radius); padding: 40px; }
+    .fit-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 20px; }
+    .fit-item { padding: 16px; background: rgba(255,255,255,0.03); border-radius: 10px; border: 1px solid var(--border); }
+    .fit-item .label { font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
+    .fit-item .value { font-size: 13px; color: var(--text-main); font-weight: 600; }
+    .fit-item .arrow { font-size: 10px; color: var(--accent-warm); margin: 4px 0; }
+
+    /* --- Sections --- */
+    .section { margin-bottom: 64px; }
+    .section-title { font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 8px; }
+    .section-sub { font-size: 1rem; color: var(--text-muted); margin-bottom: 32px; }
+
+    .card { background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: var(--radius); padding: 32px; backdrop-filter: blur(12px); }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .three-col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+
+    /* --- Relevance Mapping --- */
+    .mapping-row { display: flex; align-items: stretch; gap: 16px; margin-bottom: 12px; }
+    .map-from { flex: 1; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; font-size: 13px; }
+    .map-arrow { display: flex; align-items: center; color: var(--accent-warm); font-size: 18px; flex-shrink: 0; padding: 0 4px; }
+    .map-to { flex: 1; background: rgba(245, 158, 11, 0.06); border: 1px solid rgba(245, 158, 11, 0.2); border-radius: 10px; padding: 14px 16px; font-size: 13px; }
+    .map-from strong, .map-to strong { color: var(--text-main); display: block; margin-bottom: 2px; }
+    .map-from span, .map-to span { color: var(--text-muted); font-size: 12px; }
+
+    /* --- Scroll container --- */
+    .scroll-container { display: flex; gap: 24px; overflow-x: auto; padding: 10px 0 30px 0; scroll-snap-type: x mandatory; }
+    .scroll-container::-webkit-scrollbar { height: 6px; display: block; }
+    .scroll-container::-webkit-scrollbar-thumb { background: var(--accent-warm); border-radius: 10px; }
+    .case-card { flex: 0 0 520px; scroll-snap-align: start; display: flex; flex-direction: column; }
+
+    .diagram-wrapper { display: flex; gap: 12px; margin-top: auto; padding-top: 20px; }
+    .diagram-wrapper img { flex: 1; width: 50%; height: 200px; object-fit: cover; border-radius: 10px; border: 1px solid var(--border); cursor: zoom-in; transition: opacity 0.2s; }
+    .diagram-wrapper img:hover { opacity: 0.85; }
+    .diagram-wrapper.single img { width: 100%; flex: none; }
+
+    /* --- Product Hypothesis --- */
+    .hypothesis-card { background: linear-gradient(135deg, rgba(0, 212, 255, 0.04), rgba(245, 158, 11, 0.04)); border: 1px solid rgba(255,255,255,0.12); border-radius: var(--radius); padding: 40px; }
+    .hypothesis-card h2 { font-size: 24px; margin-bottom: 16px; }
+    .insight-list { list-style: none; margin-top: 20px; }
+    .insight-list li { padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 14px; color: var(--text-muted); padding-left: 28px; position: relative; }
+    .insight-list li:last-child { border-bottom: none; }
+    .insight-list li::before { content: "→"; position: absolute; left: 0; color: var(--accent-warm); font-weight: bold; }
+    .insight-list li strong { color: var(--text-main); }
+
+    /* --- Metrics --- */
+    .metrics-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .metric { background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 12px; padding: 20px; text-align: center; }
+    .metric b { display: block; font-size: 32px; color: var(--accent); line-height: 1.1; margin-bottom: 6px; text-shadow: 0 0 12px rgba(0, 212, 255, 0.15); }
+    .metric span { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.07em; }
+
+    footer { margin-top: 80px; padding-top: 40px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; color: var(--text-muted); font-size: 14px; }
+
+    @media (max-width: 1100px) {
+      .hero { grid-template-columns: 1fr; }
+      .metrics-row { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 850px) {
+      .topbar { flex-direction: column; height: auto; border-radius: 24px; padding: 20px; gap: 16px; }
+      .nav-left, .nav-center, .nav-right { flex: none !important; width: 100%; justify-content: center !important; }
+      .nav-info { flex-direction: column; gap: 4px; }
+      .dot { display: none; }
+      .topbar > div:not(:last-child) { border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding-bottom: 12px; }
+      .wrap { padding: 40px 20px; }
+      .two-col, .three-col, .fit-row { grid-template-columns: 1fr; }
+      .case-card { flex: 0 0 88%; }
+      .metrics-row { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .medium-zoom-overlay { z-index: 100; background: var(--bg-deep) !important; opacity: 0.9 !important; }
+    .medium-zoom-image--opened { z-index: 101; }
+  </style>
+</head>
+<body>
+  <div class="bg"></div>
+  <div class="noise"></div>
+
+  <main class="wrap">
+    <nav class="topbar">
+      <div class="nav-left">
+        <div class="left">
+          <a class="pill" href="../index.html">About</a>
+          <a class="pill" href="../work/index.html">Work</a>
+          <a class="pill" href="../ideas/index.html">Product Ideas</a>
+          <a class="pill" href="../views/index.html">Philosophy</a>
+          <a class="pill active" href="./index.html">Optn / DealPath</a>
+        </div>
+      </div>
+      <div class="nav-center">
+        <span style="font-weight: 700; font-size: 13px; letter-spacing: 0.15em; text-transform: uppercase; color: #fff;">Shalin Gosalia</span>
+      </div>
+      <div class="nav-right">
+        <div class="nav-info">
+          <span style="font-weight: 600; color: #fff;">Lead AI Product Manager</span>
+          <div class="dot"></div>
+          <span style="display: flex; align-items: center; gap: 6px;">
+            <span style="width: 6px; height: 6px; background: #10b981; border-radius: 50%; box-shadow: 0 0 8px #10b981;"></span>NYC / CA
+          </span>
+        </div>
+      </div>
+    </nav>
+
+    <div class="interview-banner">
+      <div class="banner-dot"></div>
+      <div>
+        <span style="font-size: 13px; font-weight: 600; color: var(--accent-warm);">Interview Reference — Optn / DealPath</span>
+        <span style="font-size: 13px; color: var(--text-muted); margin-left: 16px;">Prepared for the DealPath PM role · Shalin Gosalia</span>
+      </div>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div>
+        <p class="kicker warm">Why Optn × Why Me</p>
+        <h1>Deal Intelligence<br>Meets <span class="accent-warm">AI Scale.</span></h1>
+
+        <p class="hero-text">
+          DealPath is a deal management platform for institutional real estate—a domain where <strong>workflow automation, data integrity, and intelligent decision support</strong> can generate outsized returns. This is precisely the intersection where I have spent the last 13+ years.
+        </p>
+        <p class="hero-text">
+          At <strong>Morgan Stanley</strong>, I industrialized AI platforms that manage hundreds of billions in client assets—turning raw financial data into advisor-ready intelligence for <strong>25K financial advisors</strong>. The parallels to real estate deal management are direct: complex, high-stakes transactions; fragmented data sources; and users who need synthesis, not spreadsheets.
+        </p>
+        <p class="hero-text">
+          I bring a proven record of <strong>taking AI from pilot to production in regulated environments</strong>, building the governance and evaluation frameworks that make trust possible at enterprise scale.
+        </p>
+
+        <div class="cta-row">
+          <a href="mailto:gosalia.shalin@gmail.com" class="btn-primary">Let's Connect ↗</a>
+          <a href="https://calendly.com/gosalia-shalin" class="social-link" target="_blank">Schedule Time</a>
+          <a href="../work/index.html" class="social-link">See Full Work</a>
+          <a href="https://www.linkedin.com/in/shalin-gosalia/" class="social-link" target="_blank">LinkedIn</a>
+        </div>
+      </div>
+
+      <div class="fit-card">
+        <p class="kicker warm">Transferability Map</p>
+        <p style="font-size: 13px; color: var(--text-muted);">How my enterprise AI experience maps directly to the DealPath product surface.</p>
+        <div class="fit-row">
+          <div class="fit-item">
+            <div class="label">My Background</div>
+            <div class="value">RAG & Knowledge Retrieval</div>
+            <div class="arrow">↓</div>
+            <div class="label" style="color: var(--accent-warm);">DealPath Relevance</div>
+            <div class="value" style="color: var(--accent-warm); font-size: 12px;">Deal docs, comps & market data surfaced contextually</div>
+          </div>
+          <div class="fit-item">
+            <div class="label">My Background</div>
+            <div class="value">Agentic Workflow Automation</div>
+            <div class="arrow">↓</div>
+            <div class="label" style="color: var(--accent-warm);">DealPath Relevance</div>
+            <div class="value" style="color: var(--accent-warm); font-size: 12px;">Automated due-diligence checklist progression & alerts</div>
+          </div>
+          <div class="fit-item">
+            <div class="label">My Background</div>
+            <div class="value">LLMOps & Eval Frameworks</div>
+            <div class="arrow">↓</div>
+            <div class="label" style="color: var(--accent-warm);">DealPath Relevance</div>
+            <div class="value" style="color: var(--accent-warm); font-size: 12px;">AI-assisted underwriting with accuracy monitoring</div>
+          </div>
+          <div class="fit-item">
+            <div class="label">My Background</div>
+            <div class="value">Governance-by-Design</div>
+            <div class="arrow">↓</div>
+            <div class="label" style="color: var(--accent-warm);">DealPath Relevance</div>
+            <div class="value" style="color: var(--accent-warm); font-size: 12px;">Audit trails, HITL workflows for IC approvals</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- METRICS -->
+    <section class="section">
+      <div class="metrics-row">
+        <div class="metric"><b>$15M</b><span>Annual Savings Identified (Morgan Stanley)</span></div>
+        <div class="metric"><b>25K+</b><span>Enterprise Users Served Across AI Platforms</span></div>
+        <div class="metric"><b>5</b><span>AI Assistants Scaled Pilot → Production</span></div>
+        <div class="metric"><b>13+</b><span>Years PM Experience in Data & AI Platforms</span></div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE RELEVANCE -->
+    <section class="section">
+      <p class="kicker">Experience Relevance</p>
+      <h2 class="section-title">Enterprise Platform PM — Translated to PropTech</h2>
+      <p class="section-sub">A direct mapping of my most relevant work to the DealPath product domain.</p>
+
+      <div class="mapping-row">
+        <div class="map-from">
+          <strong>Morgan Stanley: AI-Assisted Advisor Workflows</strong>
+          <span>GPT-powered RAG pipelines surfacing portfolio insights and research for 25K financial advisors, reducing information retrieval from minutes to seconds.</span>
+        </div>
+        <div class="map-arrow">→</div>
+        <div class="map-to">
+          <strong>DealPath: AI-Powered Deal Intelligence</strong>
+          <span>Same pattern applied to real estate: surface comparable deals, market data, and due-diligence flags contextually within the deal workflow—without leaving the platform.</span>
+        </div>
+      </div>
+
+      <div class="mapping-row">
+        <div class="map-from">
+          <strong>Morgan Stanley: Multi-Agent Orchestration</strong>
+          <span>Hierarchical agent ecosystem (Manager → Worker agents) executing report generation, CRM synthesis, and meeting summaries autonomously.</span>
+        </div>
+        <div class="map-arrow">→</div>
+        <div class="map-to">
+          <strong>DealPath: Automated Deal Progression</strong>
+          <span>Agent-driven pipeline: ingestion of LOI/PSA documents → extraction of key terms → automated task creation for legal, finance, and ops teams → stage-gate advancement.</span>
+        </div>
+      </div>
+
+      <div class="mapping-row">
+        <div class="map-from">
+          <strong>ADP: Enterprise Orchestration & API Layer</strong>
+          <span>Built the integration backbone connecting IBM Watson NLU to HR/Payroll workflows, enabling async AI-driven self-service at scale.</span>
+        </div>
+        <div class="map-arrow">→</div>
+        <div class="map-to">
+          <strong>DealPath: Third-Party Data Integration</strong>
+          <span>Designing the API and integration layer that ingests broker data, CoStar comps, and title information into a unified deal record—eliminating manual re-keying.</span>
+        </div>
+      </div>
+
+      <div class="mapping-row">
+        <div class="map-from">
+          <strong>Verizon: NLP-Driven Self-Service Platform</strong>
+          <span>Pioneered 0→1 AI digital servicing platform deflecting 150K calls daily. Built evaluation framework measuring containment, intent accuracy, and NPS lift.</span>
+        </div>
+        <div class="map-arrow">→</div>
+        <div class="map-to">
+          <strong>DealPath: Intelligent Deal Triage</strong>
+          <span>NLP-driven classification of inbound deal opportunities—automated scoring, routing to the right investment team, and rejection rationale generation at intake velocity.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- CASE STUDIES -->
+    <section class="section">
+      <p class="kicker">Most Relevant Case Studies</p>
+      <p class="section-sub">Scroll horizontally to explore the work most applicable to DealPath.</p>
+      <div class="scroll-container">
+
+        <div class="card case-card">
+          <div>
+            <p class="kicker">Morgan Stanley</p>
+            <h3 style="font-size: 20px; margin-bottom: 8px;">Enterprise RAG & Agentic Platform</h3>
+            <p style="font-size: 14px; color: var(--text-muted);">
+              Owned strategy and delivery for <strong>5 AI assistants</strong> serving 25K financial advisors. Built production RAG pipelines with multi-stage retrieval, hybrid re-ranking, and G-Eval evaluation frameworks. Scaled from pilot to <strong>$15M annual savings opportunity</strong> with zero critical compliance incidents.
+            </p>
+            <ul style="font-size: 13px; color: var(--text-muted); margin-top: 12px; padding-left: 18px;">
+              <li>GPT-4 RAG with semantic chunking and citation-led retrieval</li>
+              <li>HITL governance for all AI-generated advisor outputs</li>
+              <li>Multi-agent orchestration for report automation</li>
+              <li>LLMOps: real-time cost, latency, and faithfulness monitoring</li>
+            </ul>
+          </div>
+          <div class="diagram-wrapper">
+            <img src="../images/rag_architecture.png" alt="RAG Architecture">
+            <img src="../images/ai_advisor_workflow.png" alt="AI Advisor Workflow">
+          </div>
+        </div>
+
+        <div class="card case-card">
+          <div>
+            <p class="kicker">Strategic Vision</p>
+            <h3 style="font-size: 20px; margin-bottom: 8px;">Beyond RAG: Agentic Deal Workflows</h3>
+            <p style="font-size: 14px; color: var(--text-muted);">
+              Architected the framework for moving from passive retrieval to <strong>autonomous agentic execution</strong>. The Hierarchical Orchestration pattern—Manager directing specialized Worker agents—maps directly to deal pipeline automation: intake → due diligence → IC memo generation → approval routing.
+            </p>
+            <ul style="font-size: 13px; color: var(--text-muted); margin-top: 12px; padding-left: 18px;">
+              <li>Manager agent coordinates deal intake, research, and output agents</li>
+              <li>Specialized agents for document extraction, comp analysis, risk flagging</li>
+              <li>Human-in-the-loop checkpoints at IC and approval stages</li>
+            </ul>
+          </div>
+          <div class="diagram-wrapper single">
+            <img src="../images/agentic_orchestration_diagram.png" alt="Agentic Orchestration">
+          </div>
+        </div>
+
+        <div class="card case-card">
+          <div>
+            <p class="kicker">ADP</p>
+            <h3 style="font-size: 20px; margin-bottom: 8px;">Enterprise AI Orchestration & API Layer</h3>
+            <p style="font-size: 14px; color: var(--text-muted);">
+              Built the orchestration layer integrating IBM Watson NLU across HR, Payroll, and HCM products. Designed the <strong>API architecture</strong> enabling async, multi-channel AI workflows—directly analogous to DealPath's integration surface connecting LPs, brokers, and internal deal teams.
+            </p>
+            <ul style="font-size: 13px; color: var(--text-muted); margin-top: 12px; padding-left: 18px;">
+              <li>NLU intent classification + entity extraction at enterprise scale</li>
+              <li>Async messaging workflows reducing manual touchpoints 40%+</li>
+              <li>API-first design enabling third-party data ingestion</li>
+            </ul>
+          </div>
+          <div class="diagram-wrapper single">
+            <img src="../images/adp_orchestration.png" alt="ADP Orchestration">
+          </div>
+        </div>
+
+        <div class="card case-card">
+          <div>
+            <p class="kicker">Enterprise GenAI Platform Vision</p>
+            <h3 style="font-size: 20px; margin-bottom: 8px;">Horizontal Self-Service AI Architecture</h3>
+            <p style="font-size: 14px; color: var(--text-muted);">
+              Designed the framework for transitioning from vertical AI silos to a <strong>horizontal, self-service platform</strong>—the same architectural shift DealPath needs to serve diverse investment strategies (core, value-add, opportunistic) without bespoke per-team builds.
+            </p>
+            <ul style="font-size: 13px; color: var(--text-muted); margin-top: 12px; padding-left: 18px;">
+              <li>Centralized AI capabilities (models, retrieval, eval) shared across teams</li>
+              <li>Configurable guardrails with team-level customization</li>
+              <li>Unified cost, security, and compliance control plane</li>
+            </ul>
+          </div>
+          <div class="diagram-wrapper single">
+            <img src="../images/internal_genai_platform.png" alt="Internal GenAI Platform">
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PRODUCT HYPOTHESIS -->
+    <section class="section">
+      <div class="hypothesis-card">
+        <p class="kicker warm">Product Thinking for DealPath</p>
+        <h2>Where I'd Focus in the First 90 Days</h2>
+        <p style="color: var(--text-muted); font-size: 14px; max-width: 700px;">
+          Based on the institutional real estate deal lifecycle, here's how I'd prioritize building AI-native intelligence into DealPath's core workflow:
+        </p>
+        <ul class="insight-list">
+          <li>
+            <strong>AI-Powered Deal Intake & Scoring:</strong> Automate the top of funnel—ingest broker OMs, extract key deal parameters (cap rate, NOI, basis), and score against fund strategy criteria. Eliminate 80% of manual triage time.
+          </li>
+          <li>
+            <strong>Contextual Comp Engine:</strong> Embed a RAG-based comparable-deal retrieval layer directly into the underwriting view. Surface the 5 most relevant closed transactions with one-click without leaving the deal record.
+          </li>
+          <li>
+            <strong>Due Diligence Orchestration:</strong> Agent-driven task generation from PSA milestones—auto-create legal, environmental, and financial review tasks with assigned owners and deadline inference from contract dates.
+          </li>
+          <li>
+            <strong>IC Memo Co-Pilot:</strong> LLM-assisted Investment Committee memo drafting that synthesizes deal data, risk flags, and comparable analysis into a structured first draft—reducing memo prep from days to hours.
+          </li>
+          <li>
+            <strong>Portfolio-Level Deal Intelligence:</strong> Cross-deal analytics surface concentration risk, vintage distribution, and pipeline health for fund managers—turning DealPath from a workflow tool into a strategic intelligence layer.
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- OPERATING PRINCIPLES -->
+    <section class="section">
+      <p class="kicker">How I Operate</p>
+      <h2 class="section-title">PM Principles Relevant to DealPath's Stage</h2>
+      <div class="three-col" style="margin-top: 32px;">
+        <div class="card">
+          <p class="kicker">Build</p>
+          <h3 style="color: var(--accent-warm); font-size: 18px; margin-bottom: 12px;">Workflow-First, AI-Second</h3>
+          <p style="font-size: 14px; color: var(--text-muted);">AI features only ship when they remove friction from an existing user workflow. I map the deal lifecycle end-to-end before identifying where intelligence adds the most value—not where it's technically possible.</p>
+        </div>
+        <div class="card">
+          <p class="kicker">Scale</p>
+          <h3 style="color: var(--accent-warm); font-size: 18px; margin-bottom: 12px;">Trust Through Governance</h3>
+          <p style="font-size: 14px; color: var(--text-muted);">Institutional investors require auditability. I design HITL checkpoints and evaluation frameworks from Day 1—not as compliance afterthoughts—so AI outputs are traceable, reviewable, and trusted by IC.</p>
+        </div>
+        <div class="card">
+          <p class="kicker">Measure</p>
+          <h3 style="color: var(--accent-warm); font-size: 18px; margin-bottom: 12px;">ROI as the North Star</h3>
+          <p style="font-size: 14px; color: var(--text-muted);">Every AI initiative I run has a measurable output: hours saved, error rate reduction, or deal velocity improvement. I instrument before I ship—so we know within 30 days whether a feature is delivering.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>© 2026 Shalin Gosalia · <a href="mailto:gosalia.shalin@gmail.com" style="color:#fff; text-decoration:none;">gosalia.shalin@gmail.com</a></p>
+      <p>Prepared for Optn / DealPath Interview</p>
+    </footer>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script>
+  <script>
+    mediumZoom('.diagram-wrapper img', { margin: 24, background: '#07090f', scrollOffset: 0 });
+  </script>
+</body>
+</html>
